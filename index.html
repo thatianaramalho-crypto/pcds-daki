@@ -319,10 +319,11 @@ hr.d { border: none; border-top: 1px solid var(--gray-100); margin: 20px 0; }
     <span class="hdr-title">People · Cota PCD</span>
   </div>
   <div class="hdr-right">
-    <span class="hdr-chip gray" contenteditable="true">Jan–Jun 2026</span>
-    <span class="hdr-chip blue" contenteditable="true">47 / 58 ativos</span>
-    <span class="hdr-chip red" contenteditable="true">⚑ Prazo 30/06</span>
-    <button class="hdr-save" onclick="saveHTML()">Baixar editado</button>
+    <span class="hdr-chip gray">Jan–Jun 2026</span>
+    <span class="hdr-chip blue">47 / 58 ativos</span>
+    <span class="hdr-chip red">⚑ Prazo 30/06</span>
+    <button class="hdr-save" onclick="saveHTML()" style="margin-right:4px">Baixar editado</button>
+    <button class="hdr-save" onclick="clearSaved()" style="background:var(--gray-500);font-size:10px;padding:5px 10px;" title="Apagar edições salvas e voltar ao original">↺ Resetar</button>
   </div>
 </header>
 
@@ -330,13 +331,13 @@ hr.d { border: none; border-top: 1px solid var(--gray-100); margin: 20px 0; }
 <!-- SIDEBAR -->
 <nav class="sidebar">
   <div class="nav-label">Visão geral</div>
-  <a class="nav-item active" onclick="go('home')"><span class="nav-dot" style="background:var(--blue)"></span>Cenário atual</a>
+  <a class="nav-item" onclick="go('home')"><span class="nav-dot" style="background:var(--blue)"></span>Cenário atual</a>
   <a class="nav-item" onclick="go('historico')"><span class="nav-dot" style="background:var(--gray-300)"></span>Histórico</a>
   <div class="nav-hr"></div>
   <div class="nav-label">Funil de Seleção</div>
   <a class="nav-item" onclick="go('funil')"><span class="nav-dot" style="background:var(--blue)"></span>Funil Jan–Mai/26</a>
   <a class="nav-item" onclick="go('perfil')"><span class="nav-dot" style="background:var(--gray-300)"></span>Perfil candidatos</a>
-  <a class="nav-item" onclick="go('lupa')"><span class="nav-dot" style="background:var(--amber)"></span>Lupa Mai/26</a>
+  <a class="nav-item active" onclick="go('lupa')"><span class="nav-dot" style="background:var(--amber)"></span>Lupa Mai/26</a>
   <a class="nav-item" onclick="go('oportunidades')"><span class="nav-dot" style="background:var(--green)"></span>Oportunidades</a>
   <div class="nav-hr"></div>
   <div class="nav-label">Diagnóstico</div>
@@ -352,46 +353,46 @@ hr.d { border: none; border-top: 1px solid var(--gray-100); margin: 20px 0; }
 <main class="main">
 
 <!-- ══ HOME ══ -->
-<section class="section active" id="home">
-  <p class="sec-eyebrow" contenteditable="true">Daki · Plano de Ação</p>
+<section class="section" id="home">
+  <p class="sec-eyebrow">Daki · Plano de Ação</p>
   <div class="sec-line"></div>
-  <h1 class="sec-title" contenteditable="true">Cota PCD.<br><em>28 dias</em> para fechar.</h1>
-  <p class="sec-desc" contenteditable="true">Cenário atualizado em 01/06. Gap de 10 vagas. Prazo MP: 30/06/2026. Responsabilidade compartilhada entre TA, BPs, HRops e área de negócio.</p>
+  <h1 class="sec-title">Cota PCD.<br><em>28 dias</em> para fechar.</h1>
+  <p class="sec-desc">Cenário atualizado em 01/06. Gap de 10 vagas. Prazo MP: 30/06/2026. Responsabilidade compartilhada entre TA, BPs, HRops e área de negócio.</p>
 
   <!-- Big numbers -->
   <div class="bignums">
     <p class="bn-title">Ano 2026 · entradas, saídas e saldo</p>
     <div class="bn-grid">
       <div class="bn-item">
-        <p class="bn-num" contenteditable="true" style="color:var(--blue)">23</p>
-        <p class="bn-label" contenteditable="true">PCDs admitidos jan–mai 2026</p>
+        <p class="bn-num" style="color:var(--blue)">23</p>
+        <p class="bn-label">PCDs admitidos jan–mai 2026</p>
       </div>
       <div class="bn-item">
-        <p class="bn-num" contenteditable="true" style="color:var(--gray-700)">19</p>
-        <p class="bn-label" contenteditable="true">saídas no período</p>
+        <p class="bn-num" style="color:var(--gray-700)">19</p>
+        <p class="bn-label">saídas no período</p>
       </div>
       <div class="bn-item">
-        <p class="bn-num" contenteditable="true" style="color:var(--gray-700)">+4</p>
-        <p class="bn-label" contenteditable="true">saldo líquido 2026</p>
+        <p class="bn-num" style="color:var(--gray-700)">+4</p>
+        <p class="bn-label">saldo líquido 2026</p>
       </div>
       <div class="bn-item">
-        <p class="bn-num" contenteditable="true" style="color:var(--black)">47</p>
-        <p class="bn-label" contenteditable="true">PCDs ativos em folha</p>
+        <p class="bn-num" style="color:var(--black)">47</p>
+        <p class="bn-label">PCDs ativos em folha</p>
       </div>
       <div class="bn-item">
-        <p class="bn-num" contenteditable="true" style="color:var(--gray-700)">10</p>
-        <p class="bn-label" contenteditable="true">gap para cota</p>
+        <p class="bn-num" style="color:var(--gray-700)">10</p>
+        <p class="bn-label">gap para cota</p>
       </div>
       <div class="bn-item">
-        <p class="bn-num" contenteditable="true" style="color:var(--blue)">13</p>
-        <p class="bn-label" contenteditable="true">meta de contratações</p>
+        <p class="bn-num" style="color:var(--blue)">13</p>
+        <p class="bn-label">meta de contratações</p>
       </div>
     </div>
   </div>
 
   <div class="g2">
     <div class="card">
-      <p class="card-title" contenteditable="true">Janelas de admissão restantes</p>
+      <p class="card-title">Janelas de admissão restantes</p>
       <div class="wins">
         <span class="win past">19/05</span>
         <span class="win past">21/05</span>
@@ -405,15 +406,15 @@ hr.d { border: none; border-top: 1px solid var(--gray-100); margin: 20px 0; }
       </div>
       <div class="progress-row"><span>Progresso da cota</span><span style="font-weight:600;color:var(--blue)">47 / 58</span></div>
       <div class="progress-track"><div class="progress-fill" style="width:81%"></div></div>
-      <p class="progress-note" contenteditable="true">5 janelas restantes. Meta: 3 a 4 admissões por janela para fechar o gap com buffer de turnover (%).</p>
+      <p class="progress-note">5 janelas restantes. Meta: 3 a 4 admissões por janela para fechar o gap com buffer de turnover (%).</p>
     </div>
     <div class="card">
-      <p class="card-title" contenteditable="true">Meta operacional</p>
-      <div class="dr"><span class="drl" contenteditable="true">Gap declarado</span><span class="drv amber" contenteditable="true">10 vagas</span></div>
-      <div class="dr"><span class="drl" contenteditable="true">Buffer turnover (30%)</span><span class="drv amber" contenteditable="true">+ 3 vagas</span></div>
-      <div class="dr"><span class="drl" contenteditable="true" style="font-weight:600;color:var(--gray-900)">Meta de contratações</span><span class="drv blue big" contenteditable="true">13 PCDs</span></div>
-      <div class="dr"><span class="drl" contenteditable="true">Upload documentos</span><span class="drv red" contenteditable="true">12/06/2026</span></div>
-      <div class="dr"><span class="drl" contenteditable="true">Última admissão válida</span><span class="drv red" contenteditable="true">22/06/2026</span></div>
+      <p class="card-title">Meta operacional</p>
+      <div class="dr"><span class="drl">Gap declarado</span><span class="drv amber">10 vagas</span></div>
+      <div class="dr"><span class="drl">Buffer turnover (30%)</span><span class="drv amber">+ 3 vagas</span></div>
+      <div class="dr"><span class="drl" style="font-weight:600;color:var(--gray-900)">Meta de contratações</span><span class="drv blue big">13 PCDs</span></div>
+      <div class="dr"><span class="drl">Upload documentos</span><span class="drv red">12/06/2026</span></div>
+      <div class="dr"><span class="drl">Última admissão válida</span><span class="drv red">22/06/2026</span></div>
     </div>
   </div>
 
@@ -445,10 +446,10 @@ hr.d { border: none; border-top: 1px solid var(--gray-100); margin: 20px 0; }
 
 <!-- ══ HISTÓRICO ══ -->
 <section class="section" id="historico">
-  <p class="sec-eyebrow" contenteditable="true">Dados</p>
+  <p class="sec-eyebrow">Dados</p>
   <div class="sec-line"></div>
-  <h2 class="sec-title" contenteditable="true">Histórico <em>Jan–Jun 2026</em></h2>
-  <p class="sec-desc" contenteditable="true">Admissões e saídas de PCDs mês a mês. 19 saídas no período — turnover acima do esperado anula parte das contratações.</p>
+  <h2 class="sec-title">Histórico <em>Jan–Jun 2026</em></h2>
+  <p class="sec-desc">Admissões e saídas de PCDs mês a mês. 19 saídas no período — turnover acima do esperado anula parte das contratações.</p>
 
   <div class="card">
     <div class="chart-legend">
@@ -456,7 +457,7 @@ hr.d { border: none; border-top: 1px solid var(--gray-100); margin: 20px 0; }
       <span class="leg-item"><span class="leg-sq" style="background:rgba(22,89,255,.7)"></span>Admissões PCD (eixo dir.)</span>
       <span class="leg-item"><span class="leg-sq" style="background:rgba(239,68,68,.7)"></span>Saídas PCD (eixo dir.)</span>
     </div>
-    <div style="position:relative;height:210px;"><canvas id="histChart" height="0" style="display: block; box-sizing: border-box; height: 0px; width: 0px;" width="0"></canvas></div>
+    <div style="position:relative;height:210px;"><canvas id="histChart" height="315" style="display: block; box-sizing: border-box; height: 210px; width: 943px;" width="1414"></canvas></div>
     <p style="font-size:10px;color:var(--gray-500);margin-top:6px;">* Base: Controle de Vagas (PCD = SIM) + planilha Desligamentos. Ativos: série MoM. 19 saídas no período incluem desligamentos voluntários, abandonos e encerramentos de contrato.</p>
     <div class="sum-strip">
       <div class="sum-box"><p class="sum-val" style="color:var(--blue)">23</p><p class="sum-label">admissões jan–mai/26</p></div>
@@ -468,14 +469,14 @@ hr.d { border: none; border-top: 1px solid var(--gray-100); margin: 20px 0; }
 
 <!-- ══ FUNIL ══ -->
 <section class="section" id="funil">
-  <p class="sec-eyebrow" contenteditable="true">Talent Acquisition · Jan–Mai 2026</p>
+  <p class="sec-eyebrow">Talent Acquisition · Jan–Mai 2026</p>
   <div class="sec-line"></div>
-  <h2 class="sec-title" contenteditable="true">Funil de seleção.<br><em>313 candidatos.</em></h2>
-  <p class="sec-desc" contenteditable="true">Base total do período: 313 candidatos. Conversão geral de 4,2%. Principal gargalo: 67% não comparece à entrevista.</p>
+  <h2 class="sec-title">Funil de seleção.<br><em>313 candidatos.</em></h2>
+  <p class="sec-desc">Base total do período: 313 candidatos. Conversão geral de 4,2%. Principal gargalo: 67% não comparece à entrevista.</p>
 
   <div class="g2">
     <div class="card">
-      <p class="card-title" contenteditable="true">Funil completo</p>
+      <p class="card-title">Funil completo</p>
       <!-- funil visual -->
       <div id="funil-visual">
   <div class="funil-row">
@@ -550,7 +551,7 @@ hr.d { border: none; border-top: 1px solid var(--gray-100); margin: 20px 0; }
   </div>
 
   <div class="card">
-    <p class="card-title" contenteditable="true">Evolução mensal</p>
+    <p class="card-title">Evolução mensal</p>
     <table class="data-table">
       <thead><tr><th>Mês</th><th>Candidatos</th><th>Participaram</th><th>Taxa compar.</th><th>2ª Etapa</th><th>Admitidos</th></tr></thead>
       <tbody>
@@ -565,22 +566,22 @@ hr.d { border: none; border-top: 1px solid var(--gray-100); margin: 20px 0; }
     <p style="font-size:11px;color:var(--gray-500);margin-top:7px;">* Maio ainda tem 2 candidatos em processo de admissão — número pode aumentar.</p>
   </div>
 
-  <div class="alert blue" contenteditable="true">
-    <span class="alert-icon" contenteditable="true">📌</span>
+  <div class="alert blue">
+    <span class="alert-icon">📌</span>
     <p><strong>Abril foi o melhor mês:</strong> 6 admissões com apenas 39 candidatos (15,4% de conversão). Maio concentrou mais candidatos mas com a pior taxa de comparecimento do período (15,6%).</p>
   </div>
 </section>
 
 <!-- ══ PERFIL ══ -->
 <section class="section" id="perfil">
-  <p class="sec-eyebrow" contenteditable="true">Talent Acquisition · Composição</p>
+  <p class="sec-eyebrow">Talent Acquisition · Composição</p>
   <div class="sec-line"></div>
-  <h2 class="sec-title" contenteditable="true">Tipos de deficiência<br><em>e fontes.</em></h2>
-  <p class="sec-desc" contenteditable="true">Base total: 313 candidatos jan–mai/26. Maioria física (22,7%) e TEA/Neurodivers. (18,2%). Principal fonte: Infojobs (227 candidatos).</p>
+  <h2 class="sec-title">Tipos de deficiência<br><em>e fontes.</em></h2>
+  <p class="sec-desc">Base total: 313 candidatos jan–mai/26. Maioria física (22,7%) e TEA/Neurodivers. (18,2%). Principal fonte: Infojobs (227 candidatos).</p>
 
   <div class="g2">
     <div class="card">
-      <p class="card-title" contenteditable="true">Candidatos por tipo de deficiência</p>
+      <p class="card-title">Candidatos por tipo de deficiência</p>
       <div id="prof-bars">
   <div class="prof-row">
     <span class="prof-label">Física</span>
@@ -634,14 +635,14 @@ hr.d { border: none; border-top: 1px solid var(--gray-100); margin: 20px 0; }
     </div>
     <div>
       <div class="card" style="margin-bottom:10px;">
-        <p class="card-title" contenteditable="true">Fonte de captação</p>
-        <div class="source-chip"><span class="source-name" contenteditable="true">Infojobs</span><span class="source-num" contenteditable="true">227</span></div>
-        <div class="source-chip"><span class="source-name" contenteditable="true">Inklua</span><span class="source-num" contenteditable="true">15</span></div>
-        <div class="source-chip"><span class="source-name" contenteditable="true">Hunting</span><span class="source-num" contenteditable="true">3</span></div>
-        <div class="source-chip"><span class="source-name" contenteditable="true">Outros / N.A.</span><span class="source-num" contenteditable="true">68</span></div>
+        <p class="card-title">Fonte de captação</p>
+        <div class="source-chip"><span class="source-name">Infojobs</span><span class="source-num">227</span></div>
+        <div class="source-chip"><span class="source-name">Inklua</span><span class="source-num">15</span></div>
+        <div class="source-chip"><span class="source-name">Hunting</span><span class="source-num">3</span></div>
+        <div class="source-chip"><span class="source-name">Outros / N.A.</span><span class="source-num">68</span></div>
       </div>
       <div class="card">
-        <p class="card-title" contenteditable="true">Admitidos por deficiência</p>
+        <p class="card-title">Admitidos por deficiência</p>
         <div id="adm-chips">
   <span class="adm-chip" style="margin:3px;">Física <span>3</span></span>
 
@@ -659,22 +660,22 @@ hr.d { border: none; border-top: 1px solid var(--gray-100); margin: 20px 0; }
     </div>
   </div>
 
-  <div class="alert amber" contenteditable="true">
-    <span class="alert-icon" contenteditable="true">⚠</span>
+  <div class="alert amber">
+    <span class="alert-icon">⚠</span>
     <p><strong>TEA / Neurodivers.</strong> é o 2º maior grupo de candidatos (57), mas apenas 1 admitido. Vale avaliar adaptações no processo para esse perfil. Auditivos e Visuais têm boa base de candidatos mas restrições de estrutura física nas lojas e CDs.</p>
   </div>
 </section>
 
 <!-- ══ LUPA ══ -->
-<section class="section" id="lupa">
-  <p class="sec-eyebrow" contenteditable="true">Detalhe · Maio 2026</p>
+<section class="section active" id="lupa">
+  <p class="sec-eyebrow">Detalhe · Maio 2026</p>
   <div class="sec-line"></div>
-  <h2 class="sec-title" contenteditable="true">77 candidatos,<br><em>4 chegaram à admissão.</em></h2>
-  <p class="sec-desc" contenteditable="true">Maio teve o maior volume de candidatos do período e a pior taxa de comparecimento (15,6%). 55 não compareceram após convocação.</p>
+  <h2 class="sec-title">77 candidatos,<br><em>4 chegaram à admissão.</em></h2>
+  <p class="sec-desc">Maio teve o maior volume de candidatos do período e a pior taxa de comparecimento (15,6%). 55 não compareceram após convocação.</p>
 
   <div class="g2">
     <div class="card">
-      <p class="card-title" contenteditable="true">Funil de maio</p>
+      <p class="card-title">Funil de maio</p>
       <div id="funil-maio">
   <div class="funil-row">
     <div class="funil-bar-wrap">
@@ -729,22 +730,22 @@ hr.d { border: none; border-top: 1px solid var(--gray-100); margin: 20px 0; }
       <p style="font-size:11px;font-weight:600;color:var(--gray-700);margin-bottom:8px;letter-spacing:.06em;text-transform:uppercase;">Pessoas na etapa de admissão</p>
       <div class="person-card">
         <div class="person-avatar">MA</div>
-        <div><p class="person-name" contenteditable="true">Mateus Augusto De Miranda</p><p class="person-meta" contenteditable="true">Shopper · Epilepsia · BH</p></div>
+        <div><p class="person-name">Mateus Augusto De Miranda</p><p class="person-meta">Shopper · Epilepsia · BH</p></div>
         <div class="person-status"><span class="badge b-green">✓ Admitido</span></div>
       </div>
       <div class="person-card">
         <div class="person-avatar" style="background:var(--gray-500)">JJ</div>
-        <div><p class="person-name" contenteditable="true">Jefferson De Jesus Santana</p><p class="person-meta" contenteditable="true">Estoquista · Física · Embu das Artes · CD Embu</p></div>
+        <div><p class="person-name">Jefferson De Jesus Santana</p><p class="person-meta">Estoquista · Física · Embu das Artes · CD Embu</p></div>
         <div class="person-status"><span class="badge b-amber">⏳ Em admissão</span></div>
       </div>
       <div class="person-card">
         <div class="person-avatar" style="background:var(--gray-500)">LF</div>
-        <div><p class="person-name" contenteditable="true">Luis Carlos Oliveira Fujiura</p><p class="person-meta" contenteditable="true">Shopper · Física · Embu das Artes</p></div>
+        <div><p class="person-name">Luis Carlos Oliveira Fujiura</p><p class="person-meta">Shopper · Física · Embu das Artes</p></div>
         <div class="person-status"><span class="badge b-amber">⏳ Em admissão</span></div>
       </div>
       <div class="person-card">
         <div class="person-avatar" style="background:var(--red)">KC</div>
-        <div><p class="person-name" contenteditable="true">Karoliny Vitória da Costa Silva</p><p class="person-meta" contenteditable="true">Shopper · TEA · Zona Sul</p></div>
+        <div><p class="person-name">Karoliny Vitória da Costa Silva</p><p class="person-meta">Shopper · TEA · Zona Sul</p></div>
         <div class="person-status"><span class="badge b-red">✗ Desistiu</span></div>
       </div>
       <div style="background:var(--blue-light);border:1px solid var(--blue-border);border-radius:var(--r-lg);padding:12px 14px;margin-top:8px;">
@@ -758,106 +759,106 @@ hr.d { border: none; border-top: 1px solid var(--gray-100); margin: 20px 0; }
 
 <!-- ══ OPORTUNIDADES ══ -->
 <section class="section" id="oportunidades">
-  <p class="sec-eyebrow" contenteditable="true">Talent Acquisition · Próximos passos</p>
+  <p class="sec-eyebrow">Talent Acquisition · Próximos passos</p>
   <div class="sec-line"></div>
-  <h2 class="sec-title" contenteditable="true">Oportunidades de melhoria<br><em>no processo.</em></h2>
-  <p class="sec-desc" contenteditable="true">Três pontos identificados no funil jan–mai/26 com maior potencial de impacto nas contratações das próximas semanas.</p>
+  <h2 class="sec-title">Oportunidades de melhoria<br><em>no processo.</em></h2>
+  <p class="sec-desc">Três pontos identificados no funil jan–mai/26 com maior potencial de impacto nas contratações das próximas semanas.</p>
 
   <div class="opp-card">
-    <p class="opp-num" contenteditable="true">01 · Comparecimento</p>
-    <p class="opp-title" contenteditable="true">Taxa caiu para 15,6% em maio — ação urgente</p>
-    <p class="opp-text" contenteditable="true">67% do total abandona antes da 1ª entrevista. Revisar abordagem de engajamento pós-convocação: mensagem de confirmação via WhatsApp no dia anterior, lembrete 2h antes, e follow-up imediato em caso de ausência. Abril teve 30,8% de comparecimento — replicar abordagem daquele mês.</p>
+    <p class="opp-num">01 · Comparecimento</p>
+    <p class="opp-title">Taxa caiu para 15,6% em maio — ação urgente</p>
+    <p class="opp-text">67% do total abandona antes da 1ª entrevista. Revisar abordagem de engajamento pós-convocação: mensagem de confirmação via WhatsApp no dia anterior, lembrete 2h antes, e follow-up imediato em caso de ausência. Abril teve 30,8% de comparecimento — replicar abordagem daquele mês.</p>
   </div>
   <div class="opp-card">
-    <p class="opp-num" contenteditable="true">02 · TEA / Neurodivers.</p>
-    <p class="opp-title" contenteditable="true">2º maior grupo de candidatos (57), apenas 1 admitido</p>
-    <p class="opp-text" contenteditable="true">Taxa de conversão desse perfil é inferior à média. Vale avaliar adaptações no processo seletivo: entrevistas assíncronas, descritivo de vaga mais claro sobre rotina e ambiente, e briefing específico para gestores sobre como conduzir entrevistas com candidatos TEA.</p>
+    <p class="opp-num">02 · TEA / Neurodivers.</p>
+    <p class="opp-title">2º maior grupo de candidatos (57), apenas 1 admitido</p>
+    <p class="opp-text">Taxa de conversão desse perfil é inferior à média. Vale avaliar adaptações no processo seletivo: entrevistas assíncronas, descritivo de vaga mais claro sobre rotina e ambiente, e briefing específico para gestores sobre como conduzir entrevistas com candidatos TEA.</p>
   </div>
   <div class="opp-card">
-    <p class="opp-num" contenteditable="true">03 · Etapa final</p>
-    <p class="opp-title" contenteditable="true">50% das pessoas em admissão desistem ou têm cancelamento</p>
-    <p class="opp-text" contenteditable="true">Identificar causa raiz: é escala? Salário abaixo do esperado? Distância? Outro emprego durante o processo? Criar pesquisa rápida (3 perguntas) enviada via WhatsApp para candidatos que desistiram na reta final.</p>
+    <p class="opp-num">03 · Etapa final</p>
+    <p class="opp-title">50% das pessoas em admissão desistem ou têm cancelamento</p>
+    <p class="opp-text">Identificar causa raiz: é escala? Salário abaixo do esperado? Distância? Outro emprego durante o processo? Criar pesquisa rápida (3 perguntas) enviada via WhatsApp para candidatos que desistiram na reta final.</p>
   </div>
 </section>
 
 <!-- ══ BLOQUEIOS ══ -->
 <section class="section" id="bloqueios">
-  <p class="sec-eyebrow" contenteditable="true">Diagnóstico</p>
+  <p class="sec-eyebrow">Diagnóstico</p>
   <div class="sec-line"></div>
-  <h2 class="sec-title" contenteditable="true">Pontos de atenção<br><em>e respostas.</em></h2>
-  <p class="sec-desc" contenteditable="true">Desafios operacionais identificados — e o que cada frente já está fazendo.</p>
+  <h2 class="sec-title">Pontos de atenção<br><em>e respostas.</em></h2>
+  <p class="sec-desc">Desafios operacionais identificados — e o que cada frente já está fazendo.</p>
 
   <div class="bloq-card">
-    <div class="bloq-head"><div class="bloq-bar" style="background:var(--amber)"></div><p class="bloq-problem" contenteditable="true"><strong>Gestores com ressalvas em contratar PCDs</strong> — argumento recorrente de "já há 1 PCD na loja" ou que a unidade é crítica. A cota é da empresa, não da loja.</p></div>
-    <div class="bloq-action"><span class="bloq-action-lbl amber" contenteditable="true">em curso</span><p class="bloq-action-txt" contenteditable="true">Sensibilização nas agendas de war room com área de negócio. Alinhamento com C-level realizado. Descida para gestores em acompanhamento — possibilidade de agenda com todos os Gerentes para reforço. PROPOSTA: sensibilização de legal + people com gerentes de lojas e GRs.</p></div>
+    <div class="bloq-head"><div class="bloq-bar" style="background:var(--amber)"></div><p class="bloq-problem"><strong>Gestores com ressalvas em contratar PCDs</strong> — argumento recorrente de "já há 1 PCD na loja" ou que a unidade é crítica. A cota é da empresa, não da loja.</p></div>
+    <div class="bloq-action"><span class="bloq-action-lbl amber">em curso</span><p class="bloq-action-txt">Sensibilização nas agendas de war room com área de negócio. Alinhamento com C-level realizado. Descida para gestores em acompanhamento — possibilidade de agenda com todos os Gerentes para reforço. PROPOSTA: sensibilização de legal + people com gerentes de lojas e GRs.</p></div>
   </div>
   <div class="bloq-card">
-    <div class="bloq-head"><div class="bloq-bar" style="background:var(--amber)"></div><p class="bloq-problem" contenteditable="true"><strong>14 desistências no funil</strong> — tempo médio elevado para agendamento da 2ª etapa faz candidatos abandonarem o processo.</p></div>
-    <div class="bloq-action"><span class="bloq-action-lbl amber" contenteditable="true">em curso</span><p class="bloq-action-txt" contenteditable="true">JAs direcionados para agilizar etapas. Em estruturação: fluxo de reporte dos gestores com maior tempo de retorno para que BPs apoiem o desbloqueio.</p></div>
+    <div class="bloq-head"><div class="bloq-bar" style="background:var(--amber)"></div><p class="bloq-problem"><strong>14 desistências no funil</strong> — tempo médio elevado para agendamento da 2ª etapa faz candidatos abandonarem o processo.</p></div>
+    <div class="bloq-action"><span class="bloq-action-lbl amber">em curso</span><p class="bloq-action-txt">JAs direcionados para agilizar etapas. Em estruturação: fluxo de reporte dos gestores com maior tempo de retorno para que BPs apoiem o desbloqueio.</p></div>
   </div>
   <div class="bloq-card">
-    <div class="bloq-head"><div class="bloq-bar" style="background:var(--red)"></div><p class="bloq-problem" contenteditable="true"><strong>9 reprovações por acessibilidade física</strong> — limitações estruturais de lojas e CDs identificadas somente após avanço no processo seletivo.</p></div>
-    <div class="bloq-action"><span class="bloq-action-lbl amber" contenteditable="true">avaliando</span><p class="bloq-action-txt" contenteditable="true">Mapeamento de Talent de quais deficiências podemos incluir, considerando limitações bla bla bla</p></div>
+    <div class="bloq-head"><div class="bloq-bar" style="background:var(--red)"></div><p class="bloq-problem"><strong>9 reprovações por acessibilidade física</strong> — limitações estruturais de lojas e CDs identificadas somente após avanço no processo seletivo.</p></div>
+    <div class="bloq-action"><span class="bloq-action-lbl amber">avaliando</span><p class="bloq-action-txt">Mapeamento de Talent de quais deficiências podemos incluir, considerando limitações bla bla bla</p></div>
   </div>
   <div class="bloq-card">
-    <div class="bloq-head"><div class="bloq-bar" style="background:var(--amber)"></div><p class="bloq-problem" contenteditable="true"><strong>Flexibilização de escala</strong> — escala 6×1 e turnos noturnos identificados como principal fator desistência ao longo do processo seletivo. 9 PCDs em situação de abandono ainda constam como ativos em folha.</p></div>
-    <div class="bloq-action"><span class="bloq-action-lbl amber" contenteditable="true">avaliando</span><p class="bloq-action-txt" contenteditable="true">Possibilidade de exceção de escala (jornada diurna) em avaliação. Pague Menos e Savegnago já adotam modelo diferenciado sem impacto em custo.</p></div>
+    <div class="bloq-head"><div class="bloq-bar" style="background:var(--amber)"></div><p class="bloq-problem"><strong>Flexibilização de escala</strong> — escala 6×1 e turnos noturnos identificados como principal fator desistência ao longo do processo seletivo. 9 PCDs em situação de abandono ainda constam como ativos em folha.</p></div>
+    <div class="bloq-action"><span class="bloq-action-lbl amber">avaliando</span><p class="bloq-action-txt">Possibilidade de exceção de escala (jornada diurna) em avaliação. Pague Menos e Savegnago já adotam modelo diferenciado sem impacto em custo.</p></div>
   </div>
   <div class="bloq-card">
-    <div class="bloq-head"><div class="bloq-bar" style="background:var(--green)"></div><p class="bloq-problem" contenteditable="true"><strong>Validação de laudos — gargalo resolvido</strong> — tempo de retorno do SALU impactava o avanço dos candidatos.</p></div>
-    <div class="bloq-action"><span class="bloq-action-lbl blue" contenteditable="true">resolvido</span><p class="bloq-action-txt" contenteditable="true">Canal prioritário SALU criado por HRops, operando com consistência. Revisão de colaboradores com documentação pendente em andamento.</p></div>
+    <div class="bloq-head"><div class="bloq-bar" style="background:var(--green)"></div><p class="bloq-problem"><strong>Validação de laudos — gargalo resolvido</strong> — tempo de retorno do SALU impactava o avanço dos candidatos.</p></div>
+    <div class="bloq-action"><span class="bloq-action-lbl blue">resolvido</span><p class="bloq-action-txt">Canal prioritário SALU criado por HRops, operando com consistência. Revisão de colaboradores com documentação pendente em andamento.</p></div>
   </div>
   <div class="bloq-card">
-    <div class="bloq-head"><div class="bloq-bar" style="background:var(--amber)"></div><p class="bloq-problem" contenteditable="true"><strong>Dependência histórica da Inklua</strong> — concentração de fonte de candidatos com risco de limitação de volume (apenas 15 candidatos no período).</p></div>
-    <div class="bloq-action"><span class="bloq-action-lbl amber" contenteditable="true">em curso</span><p class="bloq-action-txt" contenteditable="true">Nova parceria de captação em fechamento - CUP RH</p></div>
+    <div class="bloq-head"><div class="bloq-bar" style="background:var(--amber)"></div><p class="bloq-problem"><strong>Dependência histórica da Inklua</strong> — concentração de fonte de candidatos com risco de limitação de volume (apenas 15 candidatos no período).</p></div>
+    <div class="bloq-action"><span class="bloq-action-lbl amber">em curso</span><p class="bloq-action-txt">Nova parceria de captação em fechamento - CUP RH</p></div>
   </div>
 </section>
 
 <!-- ══ IMPACTO ══ -->
 <section class="section" id="impacto">
-  <p class="sec-eyebrow" contenteditable="true">Por que fechar agora</p>
+  <p class="sec-eyebrow">Por que fechar agora</p>
   <div class="sec-line"></div>
-  <h2 class="sec-title" contenteditable="true">Impacto <em>financeiro.</em></h2>
+  <h2 class="sec-title">Impacto <em>financeiro.</em></h2>
 
   <div class="g2" style="margin-bottom:12px;">
     <div class="finance-box">
-      <p class="finance-lbl" contenteditable="true">Multa por vaga não preenchida</p>
-      <p class="finance-num" contenteditable="true">R$ 6.638</p>
-      <p class="finance-cap" contenteditable="true">por vaga · por mês de descumprimento</p>
+      <p class="finance-lbl">Multa por vaga não preenchida</p>
+      <p class="finance-num">R$ 6.638</p>
+      <p class="finance-cap">por vaga · por mês de descumprimento</p>
     </div>
     <div class="card">
-      <div class="dr"><span class="drl" contenteditable="true">10 vagas em aberto</span><span class="drv red" contenteditable="true">R$ 66.380/mês</span></div>
-      <div class="dr"><span class="drl" contenteditable="true">Exposição jul–set (3 meses)</span><span class="drv red" contenteditable="true">R$ 219.054</span></div>
-      <div class="dr"><span class="drl" contenteditable="true">Risco de embargo de atividades</span><span class="drv red" contenteditable="true">possível</span></div>
-      <div class="dr"><span class="drl" contenteditable="true">Notificação pública MP</span><span class="drv red" contenteditable="true">dano de marca</span></div>
-      <div class="dr"><span class="drl" contenteditable="true">Custo de fechar com canais ativos</span><span class="drv green" contenteditable="true">R$ 0</span></div>
-      <div class="dr"><span class="drl" contenteditable="true">Relação investimento × exposição</span><span class="drv green" contenteditable="true">fator 50×</span></div>
+      <div class="dr"><span class="drl">10 vagas em aberto</span><span class="drv red">R$ 66.380/mês</span></div>
+      <div class="dr"><span class="drl">Exposição jul–set (3 meses)</span><span class="drv red">R$ 219.054</span></div>
+      <div class="dr"><span class="drl">Risco de embargo de atividades</span><span class="drv red">possível</span></div>
+      <div class="dr"><span class="drl">Notificação pública MP</span><span class="drv red">dano de marca</span></div>
+      <div class="dr"><span class="drl">Custo de fechar com canais ativos</span><span class="drv green">R$ 0</span></div>
+      <div class="dr"><span class="drl">Relação investimento × exposição</span><span class="drv green">fator 50×</span></div>
     </div>
   </div>
-  <div class="alert blue" contenteditable="true">
-    <span class="alert-icon" contenteditable="true">💡</span>
+  <div class="alert blue">
+    <span class="alert-icon">💡</span>
     <p>O único insumo necessário para fechar o gap é velocidade: SALU em 48h, gestores em 48h, documentação validada antes da janela. Nenhuma ação paga é necessária para fechar os 10 restantes.</p>
   </div>
 </section>
 
 <!-- ══ TA ══ -->
 <section class="section" id="ta">
-  <p class="sec-eyebrow" contenteditable="true">Plano de ação</p>
+  <p class="sec-eyebrow">Plano de ação</p>
   <div class="sec-line"></div>
-  <h2 class="sec-title" contenteditable="true">Talent <em>Acquisition.</em></h2>
-  <p class="sec-desc" contenteditable="true">Captação, triagem, processo seletivo. Ações concluídas e próximos passos.</p>
+  <h2 class="sec-title">Talent <em>Acquisition.</em></h2>
+  <p class="sec-desc">Captação, triagem, processo seletivo. Ações concluídas e próximos passos.</p>
   <div class="card">
     <div id="list-ta">
-      <div class="step"><div class="step-num sn-green">✓</div><span class="step-date" contenteditable="true">ativo</span><div class="step-body" style="flex:1"><p class="step-title" contenteditable="true">Inklua com agenda semanal e meta de triagem <span class="badge b-gray">recorrente</span></p><p class="step-desc" contenteditable="true">Briefing revisado com perfis elegíveis. Meta: 5 candidatos triados/semana. Alinhamento toda segunda com atualização de pipeline.</p></div></div>
-      <div class="step"><div class="step-num sn-green">✓</div><span class="step-date" contenteditable="true">ativo</span><div class="step-body" style="flex:1"><p class="step-title" contenteditable="true">Canais paralelos ativos + nova parceria em fechamento <span class="badge b-gray">em andamento</span></p><p class="step-desc" contenteditable="true">SINE Digital, Vagas Sem Barreiras, IRS Brasil, grupos WhatsApp PCD SP/BH. Nova parceria de captação em fase final.</p></div></div>
-      <div class="step"><div class="step-num sn-green">✓</div><span class="step-date" contenteditable="true">ativo</span><div class="step-body" style="flex:1"><p class="step-title" contenteditable="true">Parcerias institucionais ativas <span class="badge b-gray">em andamento</span></p><p class="step-desc" contenteditable="true">Contatos com APAE, SORRI, SINE Municipal e AME. Encaminhamento de currículos em andamento.</p></div></div>
-      <div class="step"><div class="step-num sn-green">✓</div><span class="step-date" contenteditable="true">ativo</span><div class="step-body" style="flex:1"><p class="step-title" contenteditable="true">Vagas Afirmativas <span class="badge b-gray">em andamento</span></p><p class="step-desc" contenteditable="true">Vagas afirmativas divulgadas no Pandapé e Redes Sociais.</p></div></div>
-      <div class="step"><div class="step-num sn-red">!</div><span class="step-date" contenteditable="true">Ativo</span><div class="step-body" style="flex:1"><p class="step-title" contenteditable="true">Janelas de Admissão <span class="badge b-red">prioridade máxima</span></p><p class="step-desc" contenteditable="true">Flexibilização das janelas de admissão em Junho.</p></div></div>
-      <div class="step"><div class="step-num sn-red">!</div><span class="step-date" contenteditable="true">02–04/06</span><div class="step-body" style="flex:1"><p class="step-title" contenteditable="true">Admissões nas janelas desta semana <span class="badge b-red">prioridade máxima</span></p><p class="step-desc" contenteditable="true">Candidatos com laudo SALU validado + gestor aprovado: admitir nas janelas de 02 e 04/06. Documentação checada antes de agendar.</p></div></div>
-      <div class="step"><div class="step-num sn-blue">4</div><span class="step-date" contenteditable="true">recorrente</span><div class="step-body" style="flex:1"><p class="step-title" contenteditable="true">Meta time TA <span class="badge b-blue">SLA gestor: 48h</span></p><p class="step-desc" contenteditable="true">Meta de 3 vagas fechadas por recrutador nas próximas duas semanas, totalizando 15 PCDs. *Meta só terá sucesso se Gerentes priorizarem.</p></div></div>
-      <div class="step"><div class="step-num sn-blue">5</div><span class="step-date" contenteditable="true">recorrente</span><div class="step-body" style="flex:1"><p class="step-title" contenteditable="true">Entrevistas em blocos — 6 a 8 candidatos por turno <span class="badge b-blue">SLA gestor: 48h</span></p><p class="step-desc" contenteditable="true">Blocos de 3h. Laudo enviado ao SALU no momento da triagem, sem aguardar aprovação do gestor.</p></div></div>
-      <div class="step"><div class="step-num sn-blue">6</div><span class="step-date" contenteditable="true">15–17/06</span><div class="step-body" style="flex:1"><p class="step-title" contenteditable="true">Sensibilização e monitoramento</p><p class="step-desc" contenteditable="true">Tema PCD incluído nas agendas recorrentes de war room com área de negócio.</p></div></div>
-      <div class="step"><div class="step-num sn-blue">7</div><span class="step-date" contenteditable="true">15–17/06</span><div class="step-body" style="flex:1"><p class="step-title" contenteditable="true">Últimas janelas — processos 100% concluídos <span class="badge b-amber">sem pendências</span></p><p class="step-desc" contenteditable="true">Nenhum candidato com pendência. Upload até 12/06. Confirmar 22/06 com HRops.</p></div></div>
+      <div class="step"><div class="step-num sn-green">✓</div><span class="step-date">ativo</span><div class="step-body" style="flex:1"><p class="step-title">Inklua com agenda semanal e meta de triagem <span class="badge b-gray">recorrente</span></p><p class="step-desc">Briefing revisado com perfis elegíveis. Meta: 5 candidatos triados/semana. Alinhamento toda segunda com atualização de pipeline.</p></div></div>
+      <div class="step"><div class="step-num sn-green">✓</div><span class="step-date">ativo</span><div class="step-body" style="flex:1"><p class="step-title">Canais paralelos ativos + nova parceria em fechamento <span class="badge b-gray">em andamento</span></p><p class="step-desc">SINE Digital, Vagas Sem Barreiras, IRS Brasil, grupos WhatsApp PCD SP/BH. Nova parceria de captação em fase final.</p></div></div>
+      <div class="step"><div class="step-num sn-green">✓</div><span class="step-date">ativo</span><div class="step-body" style="flex:1"><p class="step-title">Parcerias institucionais ativas <span class="badge b-gray">em andamento</span></p><p class="step-desc">Contatos com APAE, SORRI, SINE Municipal e AME. Encaminhamento de currículos em andamento.</p></div></div>
+      <div class="step"><div class="step-num sn-green">✓</div><span class="step-date">ativo</span><div class="step-body" style="flex:1"><p class="step-title">Vagas Afirmativas <span class="badge b-gray">em andamento</span></p><p class="step-desc">Vagas afirmativas divulgadas no Pandapé e Redes Sociais.</p></div></div>
+      <div class="step"><div class="step-num sn-red">!</div><span class="step-date">Ativo</span><div class="step-body" style="flex:1"><p class="step-title">Janelas de Admissão <span class="badge b-red">prioridade máxima</span></p><p class="step-desc">Flexibilização das janelas de admissão em Junho.</p></div></div>
+      <div class="step"><div class="step-num sn-red">!</div><span class="step-date">02–04/06</span><div class="step-body" style="flex:1"><p class="step-title">Admissões nas janelas desta semana <span class="badge b-red">prioridade máxima</span></p><p class="step-desc">Candidatos com laudo SALU validado + gestor aprovado: admitir nas janelas de 02 e 04/06. Documentação checada antes de agendar.</p></div></div>
+      <div class="step"><div class="step-num sn-blue">4</div><span class="step-date">recorrente</span><div class="step-body" style="flex:1"><p class="step-title">Meta time TA <span class="badge b-blue">SLA gestor: 48h</span></p><p class="step-desc">Meta de 3 vagas fechadas por recrutador nas próximas duas semanas, totalizando 15 PCDs. *Meta só terá sucesso se Gerentes priorizarem.</p></div></div>
+      <div class="step"><div class="step-num sn-blue">5</div><span class="step-date">recorrente</span><div class="step-body" style="flex:1"><p class="step-title">Entrevistas em blocos — 6 a 8 candidatos por turno <span class="badge b-blue">SLA gestor: 48h</span></p><p class="step-desc">Blocos de 3h. Laudo enviado ao SALU no momento da triagem, sem aguardar aprovação do gestor.</p></div></div>
+      <div class="step"><div class="step-num sn-blue">6</div><span class="step-date">15–17/06</span><div class="step-body" style="flex:1"><p class="step-title">Sensibilização e monitoramento</p><p class="step-desc">Tema PCD incluído nas agendas recorrentes de war room com área de negócio.</p></div></div>
+      <div class="step"><div class="step-num sn-blue">7</div><span class="step-date">15–17/06</span><div class="step-body" style="flex:1"><p class="step-title">Últimas janelas — processos 100% concluídos <span class="badge b-amber">sem pendências</span></p><p class="step-desc">Nenhum candidato com pendência. Upload até 12/06. Confirmar 22/06 com HRops.</p></div></div>
     </div>
     
   </div>
@@ -865,32 +866,32 @@ hr.d { border: none; border-top: 1px solid var(--gray-100); margin: 20px 0; }
 
 <!-- ══ BP ══ -->
 <section class="section" id="bp">
-  <p class="sec-eyebrow" contenteditable="true">Plano de ação</p>
+  <p class="sec-eyebrow">Plano de ação</p>
   <div class="sec-line"></div>
-  <h2 class="sec-title" contenteditable="true">Business Partners<br><em>+ Negócio.</em></h2>
+  <h2 class="sec-title">Business Partners<br><em>+ Negócio.</em></h2>
   <div class="card">
     <div id="list-bp">
-      <div class="step"><div class="step-num sn-green">✓</div><span class="step-date" contenteditable="true">ativo</span><div class="step-body" style="flex:1"><p class="step-title" contenteditable="true">Sensibilização nas agendas de war room <span class="badge b-gray">em andamento</span></p><p class="step-desc" contenteditable="true">Tema PCD nas agendas recorrentes de war room com área de negócio. Alinhamento com C-level realizado.</p></div></div>
-      <div class="step"><div class="step-num sn-red">!</div><span class="step-date" contenteditable="true">até 09/06</span><div class="step-body" style="flex:1"><p class="step-title" contenteditable="true">Mapear gestores com maior tempo de retorno em entrevistas PCD <span class="badge b-amber">desbloqueio</span></p><p class="step-desc" contenteditable="true">TA reporta semanalmente. BPs acionam diretamente. Foco nas unidades com maior volume de vagas abertas.</p></div></div>
-      <div class="step"><div class="step-num sn-blue">3</div><span class="step-date" contenteditable="true">recorrente</span><div class="step-body" style="flex:1"><p class="step-title" contenteditable="true">Buddy system para PCDs admitidos <span class="badge b-blue">retenção</span></p><p class="step-desc" contenteditable="true">Gestor designa colega para acompanhar nas 2 primeiras semanas. Check-in de BP no 7º dia.</p></div></div>
+      <div class="step"><div class="step-num sn-green">✓</div><span class="step-date">ativo</span><div class="step-body" style="flex:1"><p class="step-title">Sensibilização nas agendas de war room <span class="badge b-gray">em andamento</span></p><p class="step-desc">Tema PCD nas agendas recorrentes de war room com área de negócio. Alinhamento com C-level realizado.</p></div></div>
+      <div class="step"><div class="step-num sn-red">!</div><span class="step-date">até 09/06</span><div class="step-body" style="flex:1"><p class="step-title">Mapear gestores com maior tempo de retorno em entrevistas PCD <span class="badge b-amber">desbloqueio</span></p><p class="step-desc">TA reporta semanalmente. BPs acionam diretamente. Foco nas unidades com maior volume de vagas abertas.</p></div></div>
+      <div class="step"><div class="step-num sn-blue">3</div><span class="step-date">recorrente</span><div class="step-body" style="flex:1"><p class="step-title">Buddy system para PCDs admitidos <span class="badge b-blue">retenção</span></p><p class="step-desc">Gestor designa colega para acompanhar nas 2 primeiras semanas. Check-in de BP no 7º dia.</p></div></div>
     </div>
-      <div class="step"><div class="step-num sn-blue">4</div><span class="step-date" contenteditable="true">junho</span><div class="step-body" style="flex:1"><p class="step-title" contenteditable="true">Check-in de retenção PCD</p><p class="step-desc" contenteditable="true">BPs realizam contato individual com todos os PCDs ativos ao longo de junho para identificar riscos de saída e garantir a permanência até o fechamento da cota.</p></div></div>
+      <div class="step"><div class="step-num sn-blue">4</div><span class="step-date">junho</span><div class="step-body" style="flex:1"><p class="step-title">Check-in de retenção PCD</p><p class="step-desc">BPs realizam contato individual com todos os PCDs ativos ao longo de junho para identificar riscos de saída e garantir a permanência até o fechamento da cota.</p></div></div>
     
   </div>
 </section>
 
 <!-- ══ HROPS ══ -->
 <section class="section" id="hrops">
-  <p class="sec-eyebrow" contenteditable="true">Plano de ação</p>
+  <p class="sec-eyebrow">Plano de ação</p>
   <div class="sec-line"></div>
-  <h2 class="sec-title" contenteditable="true">HRops<em> + SALU.</em></h2>
+  <h2 class="sec-title">HRops<em> + SALU.</em></h2>
   <div class="card">
     <div id="list-hrops">
-      <div class="step"><div class="step-num sn-green">✓</div><span class="step-date" contenteditable="true">ativo</span><div class="step-body" style="flex:1"><p class="step-title" contenteditable="true">Canal SALU prioritário operando <span class="badge b-gray">resolvido</span></p><p class="step-desc" contenteditable="true">Canal/contato recorrente. Retorno de laudos com mais agilidade + médico do trabalho presencial.</p></div></div>
-      <div class="step"><div class="step-num sn-red">!</div><span class="step-date" contenteditable="true">urgente</span><div class="step-body" style="flex:1"><p class="step-title" contenteditable="true">Mapeamento possibilidades reenquadramento</p><p class="step-desc" contenteditable="true">Revisão de colaboradores com documentação pendente em andamento para identificar enquadramentos possíveis.</p></div></div>
-      <div class="step"><div class="step-num sn-blue">3</div><span class="step-date" contenteditable="true">recorrente</span><div class="step-body" style="flex:1"><p class="step-title" contenteditable="true">Documentação validada antes de agendar janela <span class="badge b-blue">sem retrabalho</span></p><p class="step-desc" contenteditable="true">Confirmar documentação completa antes de cada agendamento. Evita cancelamentos de última hora.</p></div></div>
+      <div class="step"><div class="step-num sn-green">✓</div><span class="step-date">ativo</span><div class="step-body" style="flex:1"><p class="step-title">Canal SALU prioritário operando <span class="badge b-gray">resolvido</span></p><p class="step-desc">Canal/contato recorrente. Retorno de laudos com mais agilidade + médico do trabalho presencial.</p></div></div>
+      <div class="step"><div class="step-num sn-red">!</div><span class="step-date">urgente</span><div class="step-body" style="flex:1"><p class="step-title">Mapeamento possibilidades reenquadramento</p><p class="step-desc">Revisão de colaboradores com documentação pendente em andamento para identificar enquadramentos possíveis.</p></div></div>
+      <div class="step"><div class="step-num sn-blue">3</div><span class="step-date">recorrente</span><div class="step-body" style="flex:1"><p class="step-title">Documentação validada antes de agendar janela <span class="badge b-blue">sem retrabalho</span></p><p class="step-desc">Confirmar documentação completa antes de cada agendamento. Evita cancelamentos de última hora.</p></div></div>
     </div>
-      <div class="step"><div class="step-num sn-blue">4</div><span class="step-date" contenteditable="true">até 12/06</span><div class="step-body" style="flex:1"><p class="step-title" contenteditable="true">Janela extra admissão</p><p class="step-desc" contenteditable="true">Flexibilização prazo subir card — até 12/06, admissão extra em 22/06.</p></div></div>
+      <div class="step"><div class="step-num sn-blue">4</div><span class="step-date">até 12/06</span><div class="step-body" style="flex:1"><p class="step-title">Janela extra admissão</p><p class="step-desc">Flexibilização prazo subir card — até 12/06, admissão extra em 22/06.</p></div></div>
     
   </div>
 </section>
@@ -1031,12 +1032,68 @@ function saveHTML(){
   a.href=URL.createObjectURL(blob);
   a.download='pcd_daki_v4.html';
   a.click();
-  const t=document.getElementById('toast');
-  t.classList.add('show');
-  setTimeout(()=>t.classList.remove('show'),2000);
+  showToast('Download iniciado ✓');
 }
 document.addEventListener('keydown',e=>{if((e.ctrlKey||e.metaKey)&&e.key==='s'){e.preventDefault();saveHTML();}});
 
+// ── AUTO-SAVE / LOAD (localStorage) ──
+const STORAGE_KEY = 'pcd_daki_edits';
+
+function collectEdits() {
+  const edits = {};
+  document.querySelectorAll('[contenteditable="true"]').forEach((el, i) => {
+    const key = el.dataset.editId || (el.dataset.editId = 'el_' + i);
+    edits[key] = el.innerHTML;
+  });
+  return edits;
+}
+
+function applyEdits(edits) {
+  document.querySelectorAll('[contenteditable="true"]').forEach((el, i) => {
+    const key = el.dataset.editId || (el.dataset.editId = 'el_' + i);
+    if (edits[key] !== undefined) el.innerHTML = edits[key];
+  });
+}
+
+function persistEdits() {
+  try {
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(collectEdits()));
+    showToast('Salvo automaticamente ✓');
+  } catch(e) {}
+}
+
+function loadEdits() {
+  try {
+    const saved = localStorage.getItem(STORAGE_KEY);
+    if (saved) {
+      applyEdits(JSON.parse(saved));
+    }
+  } catch(e) {}
+}
+
+function clearSaved() {
+  if (confirm('Apagar todas as edições e voltar ao conteúdo original?')) {
+    localStorage.removeItem(STORAGE_KEY);
+    location.reload();
+  }
+}
+
+function showToast(msg) {
+  const t = document.getElementById('toast');
+  t.textContent = msg;
+  t.classList.add('show');
+  setTimeout(() => t.classList.remove('show'), 2000);
+}
+
+// Salva 1s depois de qualquer edição
+let saveTimer;
+document.addEventListener('input', () => {
+  clearTimeout(saveTimer);
+  saveTimer = setTimeout(persistEdits, 1000);
+});
+
+// Carrega edições salvas ao abrir a página
+window.addEventListener('load', loadEdits);
 
 </script>
 
