@@ -356,7 +356,7 @@ hr.d { border: none; border-top: 1px solid var(--gray-100); margin: 20px 0; }
 <section class="section active" id="home">
   <p class="sec-eyebrow">Daki · People &amp; Cultura</p>
   <div class="sec-line"></div>
-  <h1 class="sec-title">Cota PCD.<br><em>28 dias</em> para fechar.</h1>
+  <h1 class="sec-title">Cota PCD.<br><em contenteditable="true">28 dias</em> para fechar.</h1>
   <p class="sec-desc" contenteditable="true">Cenário atualizado em 01/06. Gap de 10 vagas. Prazo MP: 30/06/2026. Responsabilidade compartilhada entre TA, BPs, HRops e área de negócio.</p>
 
   <!-- Big numbers -->
@@ -645,7 +645,7 @@ hr.d { border: none; border-top: 1px solid var(--gray-100); margin: 20px 0; }
     <div class="bloq-action"><span class="bloq-action-lbl amber">avaliando</span><p class="bloq-action-txt" contenteditable="true">Mapeamento de Talent de quais deficiências podemos incluir, considerando limitações bla bla bla</p></div>
   </div>
   <div class="bloq-card">
-    <div class="bloq-head"><div class="bloq-bar" style="background:var(--amber)"></div><p class="bloq-problem" contenteditable="true"><strong>Flexibilização **muda o nome</strong> — escala 6×1 e turnos noturnos identificados como principal fator desistência ao longo do processo seletivo. 9 PCDs em situação de abandono ainda constam como ativos em folha.</p></div>
+    <div class="bloq-head"><div class="bloq-bar" style="background:var(--amber)"></div><p class="bloq-problem" contenteditable="true"><strong>Flexibilização de escala</strong> — escala 6×1 e turnos noturnos identificados como principal fator desistência ao longo do processo seletivo. 9 PCDs em situação de abandono ainda constam como ativos em folha.</p></div>
     <div class="bloq-action"><span class="bloq-action-lbl amber">avaliando</span><p class="bloq-action-txt" contenteditable="true">Possibilidade de exceção de escala (jornada diurna) em avaliação. Pague Menos e Savegnago já adotam modelo diferenciado sem impacto em custo.</p></div>
   </div>
   <div class="bloq-card">
@@ -671,7 +671,7 @@ hr.d { border: none; border-top: 1px solid var(--gray-100); margin: 20px 0; }
       <p class="finance-cap" contenteditable="true">por vaga · por mês de descumprimento</p>
     </div>
     <div class="card">
-      <div class="dr"><span class="drl" contenteditable="true">11 vagas em aberto</span><span class="drv red" contenteditable="true">R$ 73.018/mês</span></div>
+      <div class="dr"><span class="drl" contenteditable="true">10 vagas em aberto</span><span class="drv red" contenteditable="true">R$ 66.380/mês</span></div>
       <div class="dr"><span class="drl" contenteditable="true">Exposição jul–set (3 meses)</span><span class="drv red" contenteditable="true">R$ 219.054</span></div>
       <div class="dr"><span class="drl" contenteditable="true">Risco de embargo de atividades</span><span class="drv red" contenteditable="true">possível</span></div>
       <div class="dr"><span class="drl" contenteditable="true">Notificação pública MP</span><span class="drv red" contenteditable="true">dano de marca</span></div>
@@ -681,7 +681,7 @@ hr.d { border: none; border-top: 1px solid var(--gray-100); margin: 20px 0; }
   </div>
   <div class="alert blue">
     <span class="alert-icon">💡</span>
-    <p contenteditable="true">O único insumo necessário para fechar o gap é velocidade: SALU em 48h, gestores em 48h, documentação validada antes da janela. Nenhuma ação paga é necessária para fechar os 11 restantes.</p>
+    <p contenteditable="true">O único insumo necessário para fechar o gap é velocidade: SALU em 48h, gestores em 48h, documentação validada antes da janela. Nenhuma ação paga é necessária para fechar os 10 restantes.</p>
   </div>
 </section>
 
@@ -719,6 +719,7 @@ hr.d { border: none; border-top: 1px solid var(--gray-100); margin: 20px 0; }
       <div class="step"><div class="step-num sn-red">!</div><span class="step-date" contenteditable="true">até 09/06</span><div class="step-body" style="flex:1"><p class="step-title" contenteditable="true">Mapear gestores com maior tempo de retorno em entrevistas PCD <span class="badge b-amber">desbloqueio</span></p><p class="step-desc" contenteditable="true">TA reporta semanalmente. BPs acionam diretamente. Foco nas unidades com maior volume de vagas abertas.</p></div><button class="del-btn" onclick="removeStep(this)">×</button></div>
       <div class="step"><div class="step-num sn-blue">3</div><span class="step-date" contenteditable="true">recorrente</span><div class="step-body" style="flex:1"><p class="step-title" contenteditable="true">Buddy system para PCDs admitidos <span class="badge b-blue">retenção</span></p><p class="step-desc" contenteditable="true">Gestor designa colega para acompanhar nas 2 primeiras semanas. Check-in de BP no 7º dia.</p></div><button class="del-btn" onclick="removeStep(this)">×</button></div>
     </div>
+      <div class="step"><div class="step-num sn-blue">4</div><span class="step-date" contenteditable="true">junho</span><div class="step-body" style="flex:1"><p class="step-title" contenteditable="true">Check-in de retenção PCD</p><p class="step-desc" contenteditable="true">BPs realizam contato individual com todos os PCDs ativos ao longo de junho para identificar riscos de saída e garantir a permanência até o fechamento da cota.</p></div><button class="del-btn" onclick="removeStep(this)">×</button></div>
     <button class="add-btn" onclick="addStep('list-bp')">+ Adicionar ação BP</button>
   </div>
 </section>
@@ -880,6 +881,8 @@ function saveHTML(){
   setTimeout(()=>t.classList.remove('show'),2000);
 }
 document.addEventListener('keydown',e=>{if((e.ctrlKey||e.metaKey)&&e.key==='s'){e.preventDefault();saveHTML();}});
+
+
 </script>
 </body>
 </html>
