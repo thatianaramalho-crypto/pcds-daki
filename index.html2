@@ -937,7 +937,7 @@ fv.innerHTML = funilSteps.map((s,i)=>`
   <div class="funil-row">
     <div class="funil-bar-wrap">
       <div class="funil-bar" style="width:${Math.max(s.w*2.2,20)}%;background:${blues[i]};">
-        <span class="funil-label" style="font-size:11px;">${s.label}</span>
+        <span class="funil-label" style="font-size:11px;" contenteditable="true">${s.label}</span>
       </div>
     </div>
     <span class="funil-num" contenteditable="true">${s.n}</span>
@@ -958,7 +958,7 @@ fm.innerHTML = funilMaio.map((s,i)=>`
   <div class="funil-row">
     <div class="funil-bar-wrap">
       <div class="funil-bar" style="width:${Math.max(s.w*1.5,12)}%;background:${blues[i]};">
-        <span class="funil-label" style="font-size:11px;">${s.label}</span>
+        <span class="funil-label" style="font-size:11px;" contenteditable="true">${s.label}</span>
       </div>
     </div>
     <span class="funil-num" contenteditable="true">${s.n}</span>
@@ -991,7 +991,7 @@ const admitted = [
   {label:'Auditiva', n:2},{label:'Psicossocial', n:2},{label:'TEA', n:1}
 ];
 document.getElementById('adm-chips').innerHTML = admitted.map(a=>`
-  <span class="adm-chip" style="margin:3px;">${a.label} <span>${a.n}</span></span>
+  <span class="adm-chip" style="margin:3px;" contenteditable="true">${a.label} <span>${a.n}</span></span>
 `).join('');
 
 // ── NAV ──
