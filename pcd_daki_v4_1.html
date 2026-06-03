@@ -1,0 +1,885 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PCD · Daki · Plano de Ação 2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.js"></script>
+<style>
+:root {
+  --blue: #1659FF;
+  --blue-mid: #4D7FFF;
+  --blue-light: #EBF0FF;
+  --blue-border: #B8CCFF;
+  --black: #111111;
+  --gray-900: #1F2937;
+  --gray-700: #374151;
+  --gray-500: #6B7280;
+  --gray-300: #D1D5DB;
+  --gray-100: #F3F4F6;
+  --gray-50: #F9FAFB;
+  --white: #FFFFFF;
+  --red: #EF4444;
+  --red-light: #FEE2E2;
+  --red-border: #FECACA;
+  --amber: #F59E0B;
+  --amber-light: #FEF3C7;
+  --green: #10B981;
+  --green-light: #D1FAE5;
+  --sidebar: 208px;
+  --header: 50px;
+  --r: 8px;
+  --r-lg: 12px;
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: 'Inter', sans-serif;
+  background: var(--white);
+  color: var(--gray-900);
+  font-size: 13px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ── HEADER ── */
+.hdr {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 300;
+  height: var(--header);
+  background: var(--white);
+  border-bottom: 1px solid var(--gray-300);
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 0 20px;
+}
+.hdr-left { display: flex; align-items: center; gap: 12px; }
+.hdr-logo { font-family: 'Inter', sans-serif; font-size: 18px; font-weight: 700; color: var(--blue); letter-spacing: -.5px; }
+.hdr-sep { width: 1px; height: 18px; background: var(--gray-300); }
+.hdr-title { font-size: 12px; font-weight: 500; color: var(--gray-500); letter-spacing: .02em; }
+.hdr-right { display: flex; gap: 8px; align-items: center; }
+.hdr-chip {
+  font-size: 11px; font-weight: 500; padding: 3px 10px; border-radius: 20px;
+  border: 1px solid; letter-spacing: .02em;
+}
+.hdr-chip.gray { border-color: var(--gray-300); color: var(--gray-500); background: var(--gray-50); }
+.hdr-chip.blue { border-color: var(--blue-border); color: var(--blue); background: var(--blue-light); }
+.hdr-chip.red { border-color: var(--red-border); color: var(--red); background: var(--red-light); }
+.hdr-save { font-size: 11px; font-weight: 600; padding: 5px 14px; border-radius: 6px; background: var(--blue); color: white; border: none; cursor: pointer; font-family: 'Inter', sans-serif; transition: background .15s; }
+.hdr-save:hover { background: #0040CC; }
+
+/* ── LAYOUT ── */
+.layout { display: flex; padding-top: var(--header); min-height: 100vh; }
+
+/* ── SIDEBAR ── */
+.sidebar {
+  width: var(--sidebar); min-width: var(--sidebar);
+  position: fixed; top: var(--header); left: 0; bottom: 0;
+  background: var(--white);
+  border-right: 1px solid var(--gray-300);
+  overflow-y: auto; padding: 16px 0 40px; z-index: 200;
+}
+.sidebar::-webkit-scrollbar { width: 3px; }
+.sidebar::-webkit-scrollbar-thumb { background: var(--gray-300); }
+.nav-label { font-size: 9px; font-weight: 600; letter-spacing: .14em; text-transform: uppercase; color: var(--gray-500); padding: 10px 16px 3px; }
+.nav-item {
+  display: flex; align-items: center; gap: 8px;
+  padding: 7px 16px; font-size: 12px; font-weight: 400; color: var(--gray-700);
+  cursor: pointer; transition: all .12s;
+  border-left: 2px solid transparent; text-decoration: none;
+}
+.nav-item:hover { color: var(--black); background: var(--gray-50); }
+.nav-item.active { color: var(--blue); background: var(--blue-light); border-left-color: var(--blue); font-weight: 500; }
+.nav-dot { width: 5px; height: 5px; border-radius: 50%; flex-shrink: 0; }
+.nav-hr { border: none; border-top: 1px solid var(--gray-100); margin: 8px 16px; }
+
+/* ── MAIN ── */
+.main { margin-left: var(--sidebar); flex: 1; padding: 28px 36px 80px; }
+
+/* ── SECTIONS ── */
+.section { display: none; }
+.section.active { display: block; }
+
+/* ── SECTION HEADER ── */
+.sec-eyebrow { font-size: 10px; font-weight: 600; letter-spacing: .12em; text-transform: uppercase; color: var(--blue); margin-bottom: 5px; }
+.sec-line { width: 28px; height: 2px; background: var(--blue); margin-bottom: 10px; }
+.sec-title { font-family: 'Oswald', sans-serif; font-size: 28px; font-weight: 700; color: var(--black); line-height: 1.1; margin-bottom: 4px; }
+.sec-title em { color: var(--blue); font-style: normal; }
+.sec-desc { font-size: 13px; color: var(--gray-500); max-width: 540px; line-height: 1.6; margin-bottom: 24px; }
+
+/* ── EDITABLE ── */
+[contenteditable] { outline: none; border-radius: 3px; transition: background .12s; }
+[contenteditable]:hover { background: rgba(22,89,255,.05); }
+[contenteditable]:focus { background: rgba(22,89,255,.08); box-shadow: 0 0 0 1.5px rgba(22,89,255,.25); }
+
+/* ── CARDS ── */
+.card { background: var(--white); border: 1px solid var(--gray-300); border-radius: var(--r-lg); padding: 18px 20px; margin-bottom: 12px; }
+.card-title { font-family: 'Oswald', sans-serif; font-size: 14px; font-weight: 600; color: var(--black); margin-bottom: 12px; letter-spacing: .02em; }
+
+/* ── GRIDS ── */
+.g2 { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 12px; }
+.g3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 10px; margin-bottom: 12px; }
+.g4 { display: grid; grid-template-columns: repeat(4,1fr); gap: 10px; margin-bottom: 12px; }
+
+/* ── KPI CARDS ── */
+.kpi { background: var(--white); border: 1px solid var(--gray-300); border-radius: var(--r-lg); padding: 16px 18px; }
+.kpi-label { font-size: 10px; font-weight: 600; text-transform: uppercase; letter-spacing: .08em; color: var(--gray-500); margin-bottom: 6px; }
+.kpi-val { font-family: 'Oswald', sans-serif; font-size: 34px; font-weight: 700; line-height: 1; margin-bottom: 3px; color: var(--black); }
+.kpi-val.blue { color: var(--blue); }
+.kpi-val.red { color: var(--red); }
+.kpi-val.amber { color: var(--amber); }
+.kpi-val.green { color: var(--green); }
+.kpi-sub { font-size: 11px; color: var(--gray-500); }
+
+/* ── BIG NUMBERS PANEL ── */
+.bignums { background: var(--white); border: 1px solid var(--gray-300); border-radius: var(--r-lg); padding: 20px 24px; margin-bottom: 12px; }
+.bn-title { font-family: 'Oswald', sans-serif; font-size: 11px; font-weight: 600; letter-spacing: .1em; text-transform: uppercase; color: var(--gray-500); margin-bottom: 14px; }
+.bn-grid { display: grid; grid-template-columns: repeat(6, 1fr); gap: 0; }
+.bn-item { text-align: center; padding: 0 12px; border-right: 1px solid var(--gray-300); }
+.bn-item:first-child { padding-left: 0; }
+.bn-item:last-child { border-right: none; }
+.bn-num { font-family: 'Oswald', sans-serif; font-size: 40px; font-weight: 700; line-height: 1; margin-bottom: 4px; }
+.bn-label { font-size: 10px; color: var(--gray-500); line-height: 1.35; font-weight: 500; letter-spacing: .02em; }
+
+/* ── ALERT ── */
+.alert { border-radius: var(--r); padding: 10px 14px; display: flex; gap: 10px; align-items: flex-start; margin-bottom: 14px; }
+.alert.amber { background: var(--gray-50); border: 1px solid var(--gray-300); border-left: 3px solid var(--gray-400); }
+.alert.amber p { color: var(--gray-700); }
+.alert.blue { background: var(--gray-50); border: 1px solid var(--gray-300); }
+.alert.blue p { color: var(--gray-700); }
+.alert.red { background: var(--red-light); border: 1px solid var(--red-border); }
+.alert.red p { color: #7F1D1D; }
+.alert-icon { font-size: 13px; flex-shrink: 0; margin-top: 1px; }
+.alert p { font-size: 12px; line-height: 1.55; }
+
+/* ── PROGRESS / WINDOWS ── */
+.wins { display: flex; flex-wrap: wrap; gap: 5px; margin-bottom: 12px; }
+.win { display: inline-flex; align-items: center; gap: 4px; font-size: 11px; padding: 3px 9px; border-radius: 6px; border: 1px solid var(--gray-300); color: var(--gray-500); background: var(--gray-50); font-weight: 400; }
+.win.past { opacity: .4; text-decoration: line-through; }
+.win.now { background: var(--blue); border-color: var(--blue); color: white; font-weight: 600; }
+.win.last { background: var(--amber-light); border-color: #FCD34D; color: #78350F; font-weight: 600; }
+.progress-row { display: flex; justify-content: space-between; font-size: 11px; color: var(--gray-500); margin-bottom: 4px; }
+.progress-track { height: 5px; background: var(--gray-100); border-radius: 3px; overflow: hidden; margin-bottom: 5px; }
+.progress-fill { height: 100%; border-radius: 3px; background: var(--blue); }
+.progress-note { font-size: 11px; color: var(--gray-500); }
+
+/* ── DATA ROWS ── */
+.dr { display: flex; justify-content: space-between; align-items: baseline; padding: 6px 0; border-bottom: 1px solid var(--gray-100); gap: 8px; }
+.dr:last-child { border-bottom: none; }
+.drl { font-size: 12px; color: var(--gray-500); }
+.drv { font-size: 12px; font-weight: 600; white-space: nowrap; color: var(--gray-900); }
+.drv.blue { color: var(--blue); }
+.drv.red { color: var(--red); }
+.drv.green { color: var(--green); }
+.drv.amber { color: var(--amber); }
+.drv.big { font-family: 'Oswald', sans-serif; font-size: 16px; }
+
+/* ── STEPS ── */
+.step { display: flex; gap: 12px; padding: 11px 0; border-bottom: 1px solid var(--gray-100); align-items: flex-start; }
+.step:last-child { border-bottom: none; padding-bottom: 0; }
+.step-num { width: 22px; height: 22px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 10px; font-weight: 700; flex-shrink: 0; margin-top: 1px; }
+.sn-blue { background: var(--blue-light); color: var(--blue); }
+.sn-green { background: var(--green-light); color: var(--green); }
+.sn-red { background: var(--red-light); color: var(--red); }
+.sn-amber { background: var(--amber-light); color: var(--amber); }
+.step-date { font-size: 10px; color: var(--gray-500); min-width: 46px; padding-top: 2px; flex-shrink: 0; font-weight: 500; }
+.step-title { font-size: 13px; font-weight: 600; color: var(--gray-900); margin-bottom: 3px; }
+.step-desc { font-size: 12px; color: var(--gray-500); line-height: 1.5; }
+
+/* ── BADGES ── */
+.badge { display: inline-block; font-size: 10px; font-weight: 600; padding: 1px 7px; border-radius: 20px; margin-left: 5px; vertical-align: middle; }
+.b-blue { background: var(--blue-light); color: var(--blue); }
+.b-red { background: var(--red-light); color: var(--red); }
+.b-amber { background: var(--amber-light); color: var(--amber); }
+.b-green { background: var(--green-light); color: var(--green); }
+.b-gray { background: var(--gray-100); color: var(--gray-700); }
+
+/* ── FRENTE HEADER ── */
+.frente-hdr { display: flex; align-items: center; gap: 10px; margin-bottom: 8px; }
+.frente-tag { font-size: 10px; font-weight: 700; padding: 3px 10px; border-radius: 20px; letter-spacing: .05em; text-transform: uppercase; }
+
+/* ── BLOQUEIO CARDS ── */
+.bloq-card { background: var(--white); border: 1px solid var(--gray-300); border-radius: var(--r-lg); overflow: hidden; margin-bottom: 10px; }
+.bloq-head { padding: 11px 14px; display: flex; gap: 10px; align-items: flex-start; border-bottom: 1px solid var(--gray-100); }
+.bloq-bar { width: 3px; border-radius: 2px; flex-shrink: 0; align-self: stretch; min-height: 20px; }
+.bloq-problem { font-size: 12px; color: var(--gray-900); line-height: 1.5; flex: 1; }
+.bloq-action { padding: 9px 14px 10px; background: var(--gray-50); display: flex; gap: 8px; align-items: flex-start; }
+.bloq-action-lbl { font-size: 9px; font-weight: 700; color: var(--green); letter-spacing: .08em; text-transform: uppercase; white-space: nowrap; padding-top: 2px; }
+.bloq-action-lbl.blue { color: var(--blue); }
+.bloq-action-lbl.amber { color: var(--gray-500); }
+.bloq-action-lbl.red { color: var(--red); }
+.bloq-action-txt { font-size: 12px; color: var(--gray-500); line-height: 1.45; flex: 1; }
+
+/* ── FINANCE ── */
+.finance-box { background: var(--white); border: 1px solid var(--gray-300); border-left: 3px solid var(--blue); border-radius: var(--r-lg); padding: 18px 20px; }
+.finance-lbl { font-size: 10px; color: var(--blue); font-weight: 600; letter-spacing: .08em; text-transform: uppercase; margin-bottom: 5px; }
+.finance-num { font-family: 'Oswald', sans-serif; font-size: 40px; font-weight: 700; color: var(--black); line-height: 1; margin-bottom: 3px; }
+.finance-cap { font-size: 11px; color: var(--gray-500); }
+
+/* ── FUNIL VISUAL ── */
+.funil-row { display: flex; align-items: center; gap: 10px; margin-bottom: 2px; }
+.funil-bar-wrap { flex: 1; }
+.funil-bar { height: 28px; border-radius: 4px; display: flex; align-items: center; padding: 0 10px; transition: width .4s; }
+.funil-label { font-size: 12px; font-weight: 500; color: white; white-space: nowrap; }
+.funil-num { font-family: 'Oswald', sans-serif; font-size: 16px; font-weight: 700; min-width: 38px; color: var(--gray-900); text-align: right; }
+.funil-pct { font-size: 11px; color: var(--gray-500); min-width: 40px; text-align: right; }
+.funil-drop { font-size: 11px; color: var(--gray-500); padding: 2px 0 6px 48px; display: flex; align-items: center; gap: 4px; }
+.funil-drop::before { content: '↓'; color: var(--gray-300); font-size: 10px; }
+
+/* ── TABLE ── */
+.data-table { width: 100%; border-collapse: collapse; font-size: 12px; }
+.data-table th { background: var(--gray-900); color: white; font-family: 'Oswald', sans-serif; font-size: 10px; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; padding: 9px 12px; text-align: left; }
+.data-table td { padding: 9px 12px; border-bottom: 1px solid var(--gray-100); color: var(--gray-900); vertical-align: middle; }
+.data-table tr:last-child td { border-bottom: none; font-weight: 600; background: var(--gray-50); }
+.data-table tr:hover td { background: var(--gray-50); }
+.td-blue { color: var(--blue); font-weight: 700; }
+.td-red { color: var(--red); font-weight: 600; }
+.td-green { color: var(--green); font-weight: 600; }
+
+/* ── CHART ── */
+.chart-legend { display: flex; gap: 14px; margin-bottom: 8px; flex-wrap: wrap; }
+.leg-item { display: flex; align-items: center; gap: 5px; font-size: 11px; color: var(--gray-500); }
+.leg-sq { width: 10px; height: 10px; border-radius: 2px; }
+.leg-line { width: 16px; height: 2px; }
+
+/* ── SUMMARY STRIP ── */
+.sum-strip { display: grid; grid-template-columns: repeat(3,1fr); gap: 8px; margin-top: 12px; }
+.sum-box { background: var(--white); border: 1px solid var(--gray-300); border-radius: var(--r); padding: 10px 12px; text-align: center; }
+.sum-val { font-family: 'Oswald', sans-serif; font-size: 24px; font-weight: 700; line-height: 1; margin-bottom: 2px; }
+.sum-label { font-size: 10px; color: var(--gray-500); }
+
+/* ── PROFILE BARS ── */
+.prof-row { display: flex; align-items: center; gap: 10px; margin-bottom: 7px; }
+.prof-label { font-size: 12px; color: var(--gray-700); min-width: 130px; }
+.prof-bar-track { flex: 1; height: 7px; background: var(--gray-100); border-radius: 4px; overflow: hidden; }
+.prof-bar-fill { height: 100%; background: var(--blue); border-radius: 4px; transition: width .4s; }
+.prof-num { font-size: 11px; font-weight: 600; color: var(--gray-700); min-width: 30px; text-align: right; }
+.prof-pct { font-size: 11px; color: var(--gray-500); min-width: 36px; text-align: right; }
+
+/* ── SOURCE CHIPS ── */
+.source-chip { display: flex; justify-content: space-between; align-items: center; padding: 8px 12px; background: var(--gray-50); border: 1px solid var(--gray-300); border-radius: 6px; margin-bottom: 5px; }
+.source-name { font-size: 12px; font-weight: 500; color: var(--gray-900); }
+.source-num { font-family: 'Oswald', sans-serif; font-size: 16px; font-weight: 700; color: var(--blue); }
+
+/* ── ADMITTED CHIPS ── */
+.adm-chip { display: inline-flex; align-items: center; gap: 5px; padding: 4px 10px; background: var(--gray-50); border: 1px solid var(--gray-300); border-radius: 20px; font-size: 11px; font-weight: 500; color: var(--gray-700); margin: 3px; }
+.adm-chip span { font-weight: 700; }
+
+/* ── PERSON CARD ── */
+.person-card { background: var(--white); border: 1px solid var(--gray-300); border-radius: var(--r-lg); padding: 12px 14px; margin-bottom: 8px; display: flex; gap: 12px; align-items: flex-start; }
+.person-avatar { width: 34px; height: 34px; border-radius: 50%; background: var(--blue); color: white; font-family: 'Oswald', sans-serif; font-weight: 700; font-size: 13px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+.person-name { font-size: 13px; font-weight: 600; color: var(--gray-900); margin-bottom: 2px; }
+.person-meta { font-size: 11px; color: var(--gray-500); }
+.person-status { margin-left: auto; }
+
+/* ── OPPORTUNITY CARDS ── */
+.opp-card { background: var(--white); border: 1px solid var(--gray-300); border-left: 3px solid var(--blue); border-radius: var(--r-lg); padding: 14px 16px; margin-bottom: 10px; }
+.opp-num { font-size: 10px; font-weight: 700; color: var(--blue); letter-spacing: .08em; text-transform: uppercase; margin-bottom: 5px; }
+.opp-title { font-size: 13px; font-weight: 600; color: var(--gray-900); margin-bottom: 5px; }
+.opp-text { font-size: 12px; color: var(--gray-500); line-height: 1.5; }
+
+/* ── QUICK GRID ── */
+.quick-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 10px; margin-bottom: 20px; }
+.quick-card { background: var(--white); border: 1px solid var(--gray-300); border-radius: var(--r-lg); padding: 14px 16px; cursor: pointer; transition: all .15s; }
+.quick-card:hover { border-color: var(--blue); transform: translateY(-1px); box-shadow: 0 3px 12px rgba(22,89,255,.1); }
+.qc-num { font-size: 10px; font-weight: 700; color: var(--blue); letter-spacing: .06em; text-transform: uppercase; margin-bottom: 4px; }
+.qc-title { font-family: 'Oswald', sans-serif; font-size: 14px; font-weight: 600; color: var(--black); margin-bottom: 3px; }
+.qc-desc { font-size: 11px; color: var(--gray-500); line-height: 1.4; }
+
+/* ── METRICS ── */
+.metrics-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 10px; margin-bottom: 12px; }
+.metric-card { background: var(--white); border: 1px solid var(--gray-300); border-radius: var(--r-lg); padding: 13px 15px; }
+.metric-lbl { font-size: 10px; color: var(--gray-500); margin-bottom: 3px; text-transform: uppercase; letter-spacing: .05em; font-weight: 600; }
+.metric-val { font-family: 'Oswald', sans-serif; font-size: 15px; font-weight: 600; color: var(--gray-900); margin-bottom: 2px; }
+.metric-sub { font-size: 10px; color: var(--gray-500); }
+
+/* ── DIVIDER ── */
+hr.d { border: none; border-top: 1px solid var(--gray-100); margin: 20px 0; }
+
+/* ── ADD/REMOVE ── */
+.add-btn { display: flex; align-items: center; justify-content: center; gap: 6px; font-size: 12px; color: var(--blue); background: none; border: 1px dashed var(--blue-border); border-radius: var(--r); padding: 7px 14px; cursor: pointer; margin-top: 10px; width: 100%; font-family: 'Inter', sans-serif; transition: background .15s; }
+.add-btn:hover { background: var(--blue-light); }
+.del-btn { background: none; border: none; cursor: pointer; color: var(--gray-300); font-size: 15px; padding: 2px 4px; border-radius: 4px; margin-left: auto; flex-shrink: 0; transition: color .15s; line-height: 1; }
+.del-btn:hover { color: var(--red); }
+
+/* ── TOAST ── */
+#toast { position: fixed; bottom: 20px; right: 20px; z-index: 999; background: var(--gray-900); color: white; font-size: 12px; font-weight: 500; padding: 8px 16px; border-radius: 6px; transform: translateY(12px); opacity: 0; transition: all .2s; pointer-events: none; }
+#toast.show { transform: translateY(0); opacity: 1; }
+
+@media print { #toolbar,.sidebar { display: none; } .main { margin-left: 0; padding: 20px; } [contenteditable]:hover,[contenteditable]:focus { background: transparent; box-shadow: none; } }
+@media (max-width: 800px) { .sidebar { display: none; } .main { margin-left: 0; padding: 20px 16px 60px; } .g2,.g3,.g4,.bn-grid,.quick-grid,.metrics-grid,.sum-strip { grid-template-columns: 1fr; } }
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header class="hdr">
+  <div class="hdr-left">
+    <span class="hdr-logo">daki</span>
+    <span class="hdr-sep"></span>
+    <span class="hdr-title">People &amp; Cultura · Cota PCD · Lei 8.213/91</span>
+  </div>
+  <div class="hdr-right">
+    <span class="hdr-chip gray" contenteditable="true">Jan–Jun 2026</span>
+    <span class="hdr-chip blue" contenteditable="true">47 / 58 ativos</span>
+    <span class="hdr-chip red">⚑ Prazo 30/06</span>
+    <button class="hdr-save" onclick="saveHTML()">Baixar editado</button>
+  </div>
+</header>
+
+<div class="layout">
+<!-- SIDEBAR -->
+<nav class="sidebar">
+  <div class="nav-label">Visão geral</div>
+  <a class="nav-item active" onclick="go('home')"><span class="nav-dot" style="background:var(--blue)"></span>Cenário atual</a>
+  <a class="nav-item" onclick="go('historico')"><span class="nav-dot" style="background:var(--gray-300)"></span>Histórico</a>
+  <div class="nav-hr"></div>
+  <div class="nav-label">Funil de Seleção</div>
+  <a class="nav-item" onclick="go('funil')"><span class="nav-dot" style="background:var(--blue)"></span>Funil Jan–Mai/26</a>
+  <a class="nav-item" onclick="go('perfil')"><span class="nav-dot" style="background:var(--gray-300)"></span>Perfil candidatos</a>
+  <a class="nav-item" onclick="go('lupa')"><span class="nav-dot" style="background:var(--amber)"></span>Lupa Mai/26</a>
+  <a class="nav-item" onclick="go('oportunidades')"><span class="nav-dot" style="background:var(--green)"></span>Oportunidades</a>
+  <div class="nav-hr"></div>
+  <div class="nav-label">Diagnóstico</div>
+  <a class="nav-item" onclick="go('bloqueios')"><span class="nav-dot" style="background:var(--gray-300)"></span>Bloqueios</a>
+  <a class="nav-item" onclick="go('impacto')"><span class="nav-dot" style="background:var(--red)"></span>Impacto financeiro</a>
+  <div class="nav-hr"></div>
+  <div class="nav-label">Plano de ação</div>
+  <a class="nav-item" onclick="go('ta')"><span class="nav-dot" style="background:var(--blue)"></span>Talent Acquisition</a>
+  <a class="nav-item" onclick="go('bp')"><span class="nav-dot" style="background:var(--gray-300)"></span>Business Partners</a>
+  <a class="nav-item" onclick="go('hrops')"><span class="nav-dot" style="background:var(--gray-300)"></span>HRops + SALU</a>
+</nav>
+
+<main class="main">
+
+<!-- ══ HOME ══ -->
+<section class="section active" id="home">
+  <p class="sec-eyebrow">Daki · People &amp; Cultura</p>
+  <div class="sec-line"></div>
+  <h1 class="sec-title">Cota PCD.<br><em>28 dias</em> para fechar.</h1>
+  <p class="sec-desc" contenteditable="true">Cenário atualizado em 01/06. Gap de 10 vagas. Prazo MP: 30/06/2026. Responsabilidade compartilhada entre TA, BPs, HRops e área de negócio.</p>
+
+  <!-- Big numbers -->
+  <div class="bignums">
+    <p class="bn-title">Ano 2026 · entradas, saídas e saldo</p>
+    <div class="bn-grid">
+      <div class="bn-item">
+        <p class="bn-num" style="color:var(--blue)" contenteditable="true">23</p>
+        <p class="bn-label" contenteditable="true">PCDs admitidos jan–mai 2026</p>
+      </div>
+      <div class="bn-item">
+        <p class="bn-num" style="color:var(--gray-700)" contenteditable="true">19</p>
+        <p class="bn-label" contenteditable="true">saídas no período</p>
+      </div>
+      <div class="bn-item">
+        <p class="bn-num" style="color:var(--gray-700)" contenteditable="true">+4</p>
+        <p class="bn-label" contenteditable="true">saldo líquido 2026</p>
+      </div>
+      <div class="bn-item">
+        <p class="bn-num" style="color:var(--black)" contenteditable="true">47</p>
+        <p class="bn-label" contenteditable="true">PCDs ativos em folha</p>
+      </div>
+      <div class="bn-item">
+        <p class="bn-num" style="color:var(--gray-700)" contenteditable="true">10</p>
+        <p class="bn-label" contenteditable="true">gap para cota</p>
+      </div>
+      <div class="bn-item">
+        <p class="bn-num" style="color:var(--blue)" contenteditable="true">13</p>
+        <p class="bn-label" contenteditable="true">meta de contratações</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="g2">
+    <div class="card">
+      <p class="card-title">Janelas de admissão restantes</p>
+      <div class="wins">
+        <span class="win past">19/05</span>
+        <span class="win past">21/05</span>
+        <span class="win past">26/05</span>
+        <span class="win past">28/05</span>
+        <span class="win now">02/06 — hoje</span>
+        <span class="win">04/06</span>
+        <span class="win">09/06</span>
+        <span class="win last">15/06</span>
+        <span class="win last">17/06 — última</span>
+      </div>
+      <div class="progress-row"><span contenteditable="true">Progresso da cota</span><span style="font-weight:600;color:var(--blue)" contenteditable="true">47 / 58</span></div>
+      <div class="progress-track"><div class="progress-fill" style="width:81%"></div></div>
+      <p class="progress-note" contenteditable="true">5 janelas restantes. Meta: 3 a 4 admissões por janela para fechar o gap com buffer de turnover (%).</p>
+    </div>
+    <div class="card">
+      <p class="card-title">Meta operacional</p>
+      <div class="dr"><span class="drl" contenteditable="true">Gap declarado</span><span class="drv amber" contenteditable="true">10 vagas</span></div>
+      <div class="dr"><span class="drl" contenteditable="true">Buffer turnover (30%)</span><span class="drv amber" contenteditable="true">+ 3 vagas</span></div>
+      <div class="dr"><span class="drl" style="font-weight:600;color:var(--gray-900)" contenteditable="true">Meta de contratações</span><span class="drv blue big" contenteditable="true">13 PCDs</span></div>
+      <div class="dr"><span class="drl" contenteditable="true">Upload documentos</span><span class="drv red" contenteditable="true">12/06/2026</span></div>
+      <div class="dr"><span class="drl" contenteditable="true">Última admissão válida</span><span class="drv red" contenteditable="true">22/06/2026</span></div>
+    </div>
+  </div>
+
+  <!-- Últimos 30 dias -->
+  <div class="g3">
+    <div style="background:var(--white);border:1px solid var(--gray-300);border-left:3px solid var(--blue);border-radius:var(--r-lg);padding:16px 18px;">
+      <p style="font-size:10px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--gray-500);margin-bottom:5px;" contenteditable="true">Contratações efetivadas</p>
+      <p style="font-family:'Oswald',sans-serif;font-size:38px;font-weight:700;color:var(--blue);line-height:1;margin-bottom:3px;" contenteditable="true">23</p>
+      <p style="font-size:11px;color:var(--gray-500);" contenteditable="true">admitidos de janeiro a maio 2026</p>
+    </div>
+    <div style="background:var(--white);border:1px solid var(--gray-300);border-left:3px solid var(--gray-500);border-radius:var(--r-lg);padding:16px 18px;">
+      <p style="font-size:10px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--gray-500);margin-bottom:5px;" contenteditable="true">Em regularização</p>
+      <p style="font-family:'Oswald',sans-serif;font-size:38px;font-weight:700;color:var(--gray-700);line-height:1;margin-bottom:3px;" contenteditable="true">3</p>
+      <p style="font-size:11px;color:var(--gray-500);" contenteditable="true">1 aguarda enquadramento (08/06) · 2 regularizando docs</p>
+    </div>
+    <div style="background:var(--white);border:1px solid var(--gray-300);border-left:3px solid var(--gray-300);border-radius:var(--r-lg);padding:16px 18px;">
+      <p style="font-size:10px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--gray-500);margin-bottom:5px;" contenteditable="true">Não enquadráveis + saídas</p>
+      <p style="font-family:'Oswald',sans-serif;font-size:38px;font-weight:700;color:var(--gray-700);line-height:1;margin-bottom:3px;" contenteditable="true">19</p>
+      <p style="font-size:11px;color:var(--gray-500);" contenteditable="true">Saídas de janeiro a maio 2026</p>
+    </div>
+  </div>
+
+  <div class="quick-grid">
+    <div class="quick-card" onclick="go('funil')"><p class="qc-num">Funil</p><p class="qc-title">Seleção Jan–Mai/26</p><p class="qc-desc">313 candidatos · 4,2% de conversão · principais gargalos.</p></div>
+    <div class="quick-card" onclick="go('bloqueios')"><p class="qc-num">Diagnóstico</p><p class="qc-title">Bloqueios</p><p class="qc-desc">Desafios e o que cada frente está fazendo para desbloqueá-los.</p></div>
+    <div class="quick-card" onclick="go('impacto')"><p class="qc-num">Financeiro</p><p class="qc-title">Impacto</p><p class="qc-desc">R$ 73 mil/mês de exposição. O custo de fechar: R$ 0.</p></div>
+  </div>
+</section>
+
+<!-- ══ HISTÓRICO ══ -->
+<section class="section" id="historico">
+  <p class="sec-eyebrow">Dados</p>
+  <div class="sec-line"></div>
+  <h2 class="sec-title">Histórico <em>Jan–Jun 2026</em></h2>
+  <p class="sec-desc" contenteditable="true">Admissões e saídas de PCDs mês a mês. 19 saídas no período — turnover acima do esperado anula parte das contratações.</p>
+
+  <div class="card">
+    <div class="chart-legend">
+      <span class="leg-item"><span class="leg-line" style="background:var(--blue)"></span>Ativos (eixo esq.)</span>
+      <span class="leg-item"><span class="leg-sq" style="background:rgba(22,89,255,.7)"></span>Admissões PCD (eixo dir.)</span>
+      <span class="leg-item"><span class="leg-sq" style="background:rgba(239,68,68,.7)"></span>Saídas PCD (eixo dir.)</span>
+    </div>
+    <div style="position:relative;height:210px;"><canvas id="histChart"></canvas></div>
+    <p style="font-size:10px;color:var(--gray-500);margin-top:6px;" contenteditable="true">* Base: Controle de Vagas (PCD = SIM) + planilha Desligamentos. Ativos: série MoM. 19 saídas no período incluem desligamentos voluntários, abandonos e encerramentos de contrato.</p>
+    <div class="sum-strip">
+      <div class="sum-box"><p class="sum-val" style="color:var(--blue)" contenteditable="true">23</p><p class="sum-label" contenteditable="true">admissões jan–mai/26</p></div>
+      <div class="sum-box"><p class="sum-val" style="color:var(--gray-700)" contenteditable="true">19</p><p class="sum-label" contenteditable="true">saídas no período</p></div>
+      <div class="sum-box"><p class="sum-val" style="color:var(--gray-700)" contenteditable="true">+4</p><p class="sum-label" contenteditable="true">saldo líquido 2026</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ FUNIL ══ -->
+<section class="section" id="funil">
+  <p class="sec-eyebrow">Talent Acquisition · Jan–Mai 2026</p>
+  <div class="sec-line"></div>
+  <h2 class="sec-title">Funil de seleção.<br><em>313 candidatos.</em></h2>
+  <p class="sec-desc" contenteditable="true">Base total do período: 313 candidatos. Conversão geral de 4,2%. Principal gargalo: 67% não comparece à entrevista.</p>
+
+  <div class="g2">
+    <div class="card">
+      <p class="card-title">Funil completo</p>
+      <!-- funil visual -->
+      <div id="funil-visual"></div>
+    </div>
+    <div>
+      <div class="card" style="border-left:3px solid var(--red);margin-bottom:10px;">
+        <p style="font-size:10px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--red);margin-bottom:6px;">Principal gargalo</p>
+        <p style="font-family:'Oswald',sans-serif;font-size:48px;font-weight:700;color:var(--red);line-height:1;margin-bottom:4px;" contenteditable="true">158</p>
+        <p style="font-size:13px;font-weight:500;color:var(--gray-700);margin-bottom:3px;" contenteditable="true">candidatos sem retorno</p>
+        <p style="font-size:12px;color:var(--gray-500);" contenteditable="true">Não compareceram à entrevista após convocação</p>
+      </div>
+      <div class="card">
+        <p style="font-size:10px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--gray-500);margin-bottom:6px;">Conversão geral</p>
+        <p style="font-family:'Oswald',sans-serif;font-size:48px;font-weight:700;color:var(--blue);line-height:1;margin-bottom:4px;" contenteditable="true">4,2%</p>
+        <p style="font-size:12px;color:var(--gray-500);" contenteditable="true">do total de candidatos chegou à admissão</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <p class="card-title">Evolução mensal</p>
+    <table class="data-table">
+      <thead><tr><th>Mês</th><th>Candidatos</th><th>Participaram</th><th>Taxa compar.</th><th>2ª Etapa</th><th>Admitidos</th></tr></thead>
+      <tbody>
+        <tr><td contenteditable="true">Janeiro</td><td contenteditable="true">29</td><td contenteditable="true">8</td><td class="td-green" contenteditable="true">27,6%</td><td contenteditable="true">7</td><td class="td-blue" contenteditable="true">1</td></tr>
+        <tr><td contenteditable="true">Fevereiro</td><td contenteditable="true">64</td><td contenteditable="true">14</td><td class="td-red" contenteditable="true">21,9%</td><td contenteditable="true">12</td><td contenteditable="true">0</td></tr>
+        <tr><td contenteditable="true">Março</td><td contenteditable="true">36</td><td contenteditable="true">11</td><td class="td-green" contenteditable="true">30,6%</td><td contenteditable="true">11</td><td class="td-blue" contenteditable="true">2</td></tr>
+        <tr><td contenteditable="true">Abril</td><td contenteditable="true">39</td><td contenteditable="true">12</td><td class="td-green" contenteditable="true">30,8%</td><td contenteditable="true">10</td><td class="td-blue" contenteditable="true">6</td></tr>
+        <tr style="background:#FFF8E1"><td contenteditable="true">Maio ⚠</td><td contenteditable="true">77</td><td contenteditable="true">12</td><td class="td-red" contenteditable="true">15,6%</td><td contenteditable="true">8</td><td contenteditable="true">1*</td></tr>
+        <tr><td><strong>Total</strong></td><td><strong>245</strong></td><td><strong>57</strong></td><td><strong>23,3%</strong></td><td><strong>48</strong></td><td class="td-blue"><strong>10*</strong></td></tr>
+      </tbody>
+    </table>
+    <p style="font-size:11px;color:var(--gray-500);margin-top:7px;" contenteditable="true">* Maio ainda tem 2 candidatos em processo de admissão — número pode aumentar.</p>
+  </div>
+
+  <div class="alert blue">
+    <span class="alert-icon">📌</span>
+    <p contenteditable="true"><strong>Abril foi o melhor mês:</strong> 6 admissões com apenas 39 candidatos (15,4% de conversão). Maio concentrou mais candidatos mas com a pior taxa de comparecimento do período (15,6%).</p>
+  </div>
+</section>
+
+<!-- ══ PERFIL ══ -->
+<section class="section" id="perfil">
+  <p class="sec-eyebrow">Talent Acquisition · Composição</p>
+  <div class="sec-line"></div>
+  <h2 class="sec-title">Tipos de deficiência<br><em>e fontes.</em></h2>
+  <p class="sec-desc" contenteditable="true">Base total: 313 candidatos jan–mai/26. Maioria física (22,7%) e TEA/Neurodivers. (18,2%). Principal fonte: Infojobs (227 candidatos).</p>
+
+  <div class="g2">
+    <div class="card">
+      <p class="card-title">Candidatos por tipo de deficiência</p>
+      <div id="prof-bars"></div>
+    </div>
+    <div>
+      <div class="card" style="margin-bottom:10px;">
+        <p class="card-title">Fonte de captação</p>
+        <div class="source-chip"><span class="source-name" contenteditable="true">Infojobs</span><span class="source-num" contenteditable="true">227</span></div>
+        <div class="source-chip"><span class="source-name" contenteditable="true">Inklua</span><span class="source-num" contenteditable="true">15</span></div>
+        <div class="source-chip"><span class="source-name" contenteditable="true">Hunting</span><span class="source-num" contenteditable="true">3</span></div>
+        <div class="source-chip"><span class="source-name" contenteditable="true">Outros / N.A.</span><span class="source-num" contenteditable="true">68</span></div>
+      </div>
+      <div class="card">
+        <p class="card-title">Admitidos por deficiência</p>
+        <div id="adm-chips"></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="alert amber">
+    <span class="alert-icon">⚠</span>
+    <p contenteditable="true"><strong>TEA / Neurodivers.</strong> é o 2º maior grupo de candidatos (57), mas apenas 1 admitido. Vale avaliar adaptações no processo para esse perfil. Auditivos e Visuais têm boa base de candidatos mas restrições de estrutura física nas lojas e CDs.</p>
+  </div>
+</section>
+
+<!-- ══ LUPA ══ -->
+<section class="section" id="lupa">
+  <p class="sec-eyebrow">Detalhe · Maio 2026</p>
+  <div class="sec-line"></div>
+  <h2 class="sec-title">77 candidatos,<br><em>4 chegaram à admissão.</em></h2>
+  <p class="sec-desc" contenteditable="true">Maio teve o maior volume de candidatos do período e a pior taxa de comparecimento (15,6%). 55 não compareceram após convocação.</p>
+
+  <div class="g2">
+    <div class="card">
+      <p class="card-title">Funil de maio</p>
+      <div id="funil-maio"></div>
+      <div style="background:var(--gray-50);border:1px solid var(--gray-300);border-radius:8px;padding:10px 14px;margin-top:12px;">
+        <p style="font-size:11px;font-weight:600;color:var(--gray-700);margin-bottom:6px;">Detalhe dos 4 em admissão</p>
+        <div style="display:flex;gap:8px;flex-wrap:wrap;">
+          <span style="background:var(--green-light);border:1px solid #6EE7B7;border-radius:20px;padding:3px 10px;font-size:11px;font-weight:600;color:#065F46;">✓ 1 admitido</span>
+          <span style="background:var(--amber-light);border:1px solid #FCD34D;border-radius:20px;padding:3px 10px;font-size:11px;font-weight:600;color:#78350F;">⏳ 2 em andamento</span>
+          <span style="background:var(--red-light);border:1px solid var(--red-border);border-radius:20px;padding:3px 10px;font-size:11px;font-weight:600;color:#7F1D1D;">✗ 1 desistiu</span>
+        </div>
+      </div>
+    </div>
+    <div>
+      <p style="font-size:11px;font-weight:600;color:var(--gray-700);margin-bottom:8px;letter-spacing:.06em;text-transform:uppercase;">Pessoas na etapa de admissão</p>
+      <div class="person-card">
+        <div class="person-avatar">MA</div>
+        <div><p class="person-name" contenteditable="true">Mateus Augusto De Miranda</p><p class="person-meta" contenteditable="true">Shopper · Epilepsia · BH</p></div>
+        <div class="person-status"><span class="badge b-green">✓ Admitido</span></div>
+      </div>
+      <div class="person-card">
+        <div class="person-avatar" style="background:var(--gray-500)">JJ</div>
+        <div><p class="person-name" contenteditable="true">Jefferson De Jesus Santana</p><p class="person-meta" contenteditable="true">Estoquista · Física · Embu das Artes · CD Embu</p></div>
+        <div class="person-status"><span class="badge b-amber">⏳ Em admissão</span></div>
+      </div>
+      <div class="person-card">
+        <div class="person-avatar" style="background:var(--gray-500)">LF</div>
+        <div><p class="person-name" contenteditable="true">Luis Carlos Oliveira Fujiura</p><p class="person-meta" contenteditable="true">Shopper · Física · Embu das Artes</p></div>
+        <div class="person-status"><span class="badge b-amber">⏳ Em admissão</span></div>
+      </div>
+      <div class="person-card">
+        <div class="person-avatar" style="background:var(--red)">KC</div>
+        <div><p class="person-name" contenteditable="true">Karoliny Vitória da Costa Silva</p><p class="person-meta" contenteditable="true">Shopper · TEA · Zona Sul</p></div>
+        <div class="person-status"><span class="badge b-red">✗ Desistiu</span></div>
+      </div>
+      <div style="background:var(--blue-light);border:1px solid var(--blue-border);border-radius:var(--r-lg);padding:12px 14px;margin-top:8px;">
+        <p style="font-size:10px;font-weight:700;color:var(--blue);letter-spacing:.08em;text-transform:uppercase;margin-bottom:5px;">+ 1 aprovado no TA aguardando 2ª etapa</p>
+        <p style="font-size:13px;font-weight:600;color:var(--gray-900);" contenteditable="true">Lourisvaldo Gomes dos Santos</p>
+        <p style="font-size:11px;color:var(--gray-500);" contenteditable="true">Shopper · Física · Barueri</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ OPORTUNIDADES ══ -->
+<section class="section" id="oportunidades">
+  <p class="sec-eyebrow">Talent Acquisition · Próximos passos</p>
+  <div class="sec-line"></div>
+  <h2 class="sec-title">Oportunidades de melhoria<br><em>no processo.</em></h2>
+  <p class="sec-desc" contenteditable="true">Três pontos identificados no funil jan–mai/26 com maior potencial de impacto nas contratações das próximas semanas.</p>
+
+  <div class="opp-card">
+    <p class="opp-num">01 · Comparecimento</p>
+    <p class="opp-title" contenteditable="true">Taxa caiu para 15,6% em maio — ação urgente</p>
+    <p class="opp-text" contenteditable="true">67% do total abandona antes da 1ª entrevista. Revisar abordagem de engajamento pós-convocação: mensagem de confirmação via WhatsApp no dia anterior, lembrete 2h antes, e follow-up imediato em caso de ausência. Abril teve 30,8% de comparecimento — replicar abordagem daquele mês.</p>
+  </div>
+  <div class="opp-card">
+    <p class="opp-num">02 · TEA / Neurodivers.</p>
+    <p class="opp-title" contenteditable="true">2º maior grupo de candidatos (57), apenas 1 admitido</p>
+    <p class="opp-text" contenteditable="true">Taxa de conversão desse perfil é inferior à média. Vale avaliar adaptações no processo seletivo: entrevistas assíncronas, descritivo de vaga mais claro sobre rotina e ambiente, e briefing específico para gestores sobre como conduzir entrevistas com candidatos TEA.</p>
+  </div>
+  <div class="opp-card">
+    <p class="opp-num">03 · Etapa final</p>
+    <p class="opp-title" contenteditable="true">50% das pessoas em admissão desistem ou têm cancelamento</p>
+    <p class="opp-text" contenteditable="true">Identificar causa raiz: é escala? Salário abaixo do esperado? Distância? Outro emprego durante o processo? Criar pesquisa rápida (3 perguntas) enviada via WhatsApp para candidatos que desistiram na reta final.</p>
+  </div>
+</section>
+
+<!-- ══ BLOQUEIOS ══ -->
+<section class="section" id="bloqueios">
+  <p class="sec-eyebrow">Diagnóstico</p>
+  <div class="sec-line"></div>
+  <h2 class="sec-title">Pontos de atenção<br><em>e respostas.</em></h2>
+  <p class="sec-desc" contenteditable="true">Desafios operacionais identificados — e o que cada frente já está fazendo.</p>
+
+  <div class="bloq-card">
+    <div class="bloq-head"><div class="bloq-bar" style="background:var(--amber)"></div><p class="bloq-problem" contenteditable="true"><strong>Gestores com ressalvas em contratar PCDs</strong> — argumento recorrente de "já há 1 PCD na loja" ou que a unidade é crítica. A cota é da empresa, não da loja.</p></div>
+    <div class="bloq-action"><span class="bloq-action-lbl amber">em curso</span><p class="bloq-action-txt" contenteditable="true">Sensibilização nas agendas de war room com área de negócio. Alinhamento com C-level realizado. Descida para gestores em acompanhamento — possibilidade de agenda com todos os Gerentes para reforço. PROPOSTA: sensibilização de legal + people com gerentes de lojas e GRs.</p></div>
+  </div>
+  <div class="bloq-card">
+    <div class="bloq-head"><div class="bloq-bar" style="background:var(--amber)"></div><p class="bloq-problem" contenteditable="true"><strong>14 desistências no funil</strong> — tempo médio elevado para agendamento da 2ª etapa faz candidatos abandonarem o processo.</p></div>
+    <div class="bloq-action"><span class="bloq-action-lbl amber">em curso</span><p class="bloq-action-txt" contenteditable="true">JAs direcionados para agilizar etapas. Em estruturação: fluxo de reporte dos gestores com maior tempo de retorno para que BPs apoiem o desbloqueio.</p></div>
+  </div>
+  <div class="bloq-card">
+    <div class="bloq-head"><div class="bloq-bar" style="background:var(--red)"></div><p class="bloq-problem" contenteditable="true"><strong>9 reprovações por acessibilidade física</strong> — limitações estruturais de lojas e CDs identificadas somente após avanço no processo seletivo.</p></div>
+    <div class="bloq-action"><span class="bloq-action-lbl amber">avaliando</span><p class="bloq-action-txt" contenteditable="true">Mapeamento de Talent de quais deficiências podemos incluir, considerando limitações bla bla bla</p></div>
+  </div>
+  <div class="bloq-card">
+    <div class="bloq-head"><div class="bloq-bar" style="background:var(--amber)"></div><p class="bloq-problem" contenteditable="true"><strong>Flexibilização **muda o nome</strong> — escala 6×1 e turnos noturnos identificados como principal fator desistência ao longo do processo seletivo. 9 PCDs em situação de abandono ainda constam como ativos em folha.</p></div>
+    <div class="bloq-action"><span class="bloq-action-lbl amber">avaliando</span><p class="bloq-action-txt" contenteditable="true">Possibilidade de exceção de escala (jornada diurna) em avaliação. Pague Menos e Savegnago já adotam modelo diferenciado sem impacto em custo.</p></div>
+  </div>
+  <div class="bloq-card">
+    <div class="bloq-head"><div class="bloq-bar" style="background:var(--green)"></div><p class="bloq-problem" contenteditable="true"><strong>Validação de laudos — gargalo resolvido</strong> — tempo de retorno do SALU impactava o avanço dos candidatos.</p></div>
+    <div class="bloq-action"><span class="bloq-action-lbl blue">resolvido</span><p class="bloq-action-txt" contenteditable="true">Canal prioritário SALU criado por HRops, operando com consistência. Revisão de colaboradores com documentação pendente em andamento.</p></div>
+  </div>
+  <div class="bloq-card">
+    <div class="bloq-head"><div class="bloq-bar" style="background:var(--amber)"></div><p class="bloq-problem" contenteditable="true"><strong>Dependência histórica da Inklua</strong> — concentração de fonte de candidatos com risco de limitação de volume (apenas 15 candidatos no período).</p></div>
+    <div class="bloq-action"><span class="bloq-action-lbl amber">em curso</span><p class="bloq-action-txt" contenteditable="true">Nova parceria de captação em fechamento - CUP RH</p></div>
+  </div>
+</section>
+
+<!-- ══ IMPACTO ══ -->
+<section class="section" id="impacto">
+  <p class="sec-eyebrow">Por que fechar agora</p>
+  <div class="sec-line"></div>
+  <h2 class="sec-title">Impacto <em>financeiro.</em></h2>
+
+  <div class="g2" style="margin-bottom:12px;">
+    <div class="finance-box">
+      <p class="finance-lbl">Multa por vaga não preenchida</p>
+      <p class="finance-num" contenteditable="true">R$ 6.638</p>
+      <p class="finance-cap" contenteditable="true">por vaga · por mês de descumprimento</p>
+    </div>
+    <div class="card">
+      <div class="dr"><span class="drl" contenteditable="true">11 vagas em aberto</span><span class="drv red" contenteditable="true">R$ 73.018/mês</span></div>
+      <div class="dr"><span class="drl" contenteditable="true">Exposição jul–set (3 meses)</span><span class="drv red" contenteditable="true">R$ 219.054</span></div>
+      <div class="dr"><span class="drl" contenteditable="true">Risco de embargo de atividades</span><span class="drv red" contenteditable="true">possível</span></div>
+      <div class="dr"><span class="drl" contenteditable="true">Notificação pública MP</span><span class="drv red" contenteditable="true">dano de marca</span></div>
+      <div class="dr"><span class="drl" contenteditable="true">Custo de fechar com canais ativos</span><span class="drv green" contenteditable="true">R$ 0</span></div>
+      <div class="dr"><span class="drl" contenteditable="true">Relação investimento × exposição</span><span class="drv green" contenteditable="true">fator 50×</span></div>
+    </div>
+  </div>
+  <div class="alert blue">
+    <span class="alert-icon">💡</span>
+    <p contenteditable="true">O único insumo necessário para fechar o gap é velocidade: SALU em 48h, gestores em 48h, documentação validada antes da janela. Nenhuma ação paga é necessária para fechar os 11 restantes.</p>
+  </div>
+</section>
+
+<!-- ══ TA ══ -->
+<section class="section" id="ta">
+  <p class="sec-eyebrow">Plano de ação</p>
+  <div class="sec-line"></div>
+  <h2 class="sec-title">Talent <em>Acquisition.</em></h2>
+  <p class="sec-desc" contenteditable="true">Captação, triagem, processo seletivo. Ações concluídas e próximos passos.</p>
+  <div class="card">
+    <div id="list-ta">
+      <div class="step"><div class="step-num sn-green">✓</div><span class="step-date" contenteditable="true">ativo</span><div class="step-body" style="flex:1"><p class="step-title" contenteditable="true">Inklua com agenda semanal e meta de triagem <span class="badge b-gray">recorrente</span></p><p class="step-desc" contenteditable="true">Briefing revisado com perfis elegíveis. Meta: 5 candidatos triados/semana. Alinhamento toda segunda com atualização de pipeline.</p></div><button class="del-btn" onclick="removeStep(this)">×</button></div>
+      <div class="step"><div class="step-num sn-green">✓</div><span class="step-date" contenteditable="true">ativo</span><div class="step-body" style="flex:1"><p class="step-title" contenteditable="true">Canais paralelos ativos + nova parceria em fechamento <span class="badge b-gray">em andamento</span></p><p class="step-desc" contenteditable="true">SINE Digital, Vagas Sem Barreiras, IRS Brasil, grupos WhatsApp PCD SP/BH. Nova parceria de captação em fase final.</p></div><button class="del-btn" onclick="removeStep(this)">×</button></div>
+      <div class="step"><div class="step-num sn-green">✓</div><span class="step-date" contenteditable="true">ativo</span><div class="step-body" style="flex:1"><p class="step-title" contenteditable="true">Parcerias institucionais ativas <span class="badge b-gray">em andamento</span></p><p class="step-desc" contenteditable="true">Contatos com APAE, SORRI, SINE Municipal e AME. Encaminhamento de currículos em andamento.</p></div><button class="del-btn" onclick="removeStep(this)">×</button></div>
+      <div class="step"><div class="step-num sn-green">✓</div><span class="step-date" contenteditable="true">ativo</span><div class="step-body" style="flex:1"><p class="step-title" contenteditable="true">Vagas Afirmativas <span class="badge b-gray">em andamento</span></p><p class="step-desc" contenteditable="true">Vagas afirmativas divulgadas no Pandapé e Redes Sociais.</p></div><button class="del-btn" onclick="removeStep(this)">×</button></div>
+      <div class="step"><div class="step-num sn-red">!</div><span class="step-date" contenteditable="true">Ativo</span><div class="step-body" style="flex:1"><p class="step-title" contenteditable="true">Janelas de Admissão <span class="badge b-red">prioridade máxima</span></p><p class="step-desc" contenteditable="true">Flexibilização das janelas de admissão em Junho.</p></div><button class="del-btn" onclick="removeStep(this)">×</button></div>
+      <div class="step"><div class="step-num sn-red">!</div><span class="step-date" contenteditable="true">02–04/06</span><div class="step-body" style="flex:1"><p class="step-title" contenteditable="true">Admissões nas janelas desta semana <span class="badge b-red">prioridade máxima</span></p><p class="step-desc" contenteditable="true">Candidatos com laudo SALU validado + gestor aprovado: admitir nas janelas de 02 e 04/06. Documentação checada antes de agendar.</p></div><button class="del-btn" onclick="removeStep(this)">×</button></div>
+      <div class="step"><div class="step-num sn-blue">4</div><span class="step-date" contenteditable="true">recorrente</span><div class="step-body" style="flex:1"><p class="step-title" contenteditable="true">Meta time TA <span class="badge b-blue">SLA gestor: 48h</span></p><p class="step-desc" contenteditable="true">Meta de 3 vagas fechadas por recrutador nas próximas duas semanas, totalizando 15 PCDs. *Meta só terá sucesso se Gerentes priorizarem.</p></div><button class="del-btn" onclick="removeStep(this)">×</button></div>
+      <div class="step"><div class="step-num sn-blue">5</div><span class="step-date" contenteditable="true">recorrente</span><div class="step-body" style="flex:1"><p class="step-title" contenteditable="true">Entrevistas em blocos — 6 a 8 candidatos por turno <span class="badge b-blue">SLA gestor: 48h</span></p><p class="step-desc" contenteditable="true">Blocos de 3h. Laudo enviado ao SALU no momento da triagem, sem aguardar aprovação do gestor.</p></div><button class="del-btn" onclick="removeStep(this)">×</button></div>
+      <div class="step"><div class="step-num sn-blue">6</div><span class="step-date" contenteditable="true">15–17/06</span><div class="step-body" style="flex:1"><p class="step-title" contenteditable="true">Sensibilização e monitoramento</p><p class="step-desc" contenteditable="true">Tema PCD incluído nas agendas recorrentes de war room com área de negócio.</p></div><button class="del-btn" onclick="removeStep(this)">×</button></div>
+      <div class="step"><div class="step-num sn-blue">7</div><span class="step-date" contenteditable="true">15–17/06</span><div class="step-body" style="flex:1"><p class="step-title" contenteditable="true">Últimas janelas — processos 100% concluídos <span class="badge b-amber">sem pendências</span></p><p class="step-desc" contenteditable="true">Nenhum candidato com pendência. Upload até 12/06. Confirmar 22/06 com HRops.</p></div><button class="del-btn" onclick="removeStep(this)">×</button></div>
+    </div>
+    <button class="add-btn" onclick="addStep('list-ta')">+ Adicionar ação TA</button>
+  </div>
+</section>
+
+<!-- ══ BP ══ -->
+<section class="section" id="bp">
+  <p class="sec-eyebrow">Plano de ação</p>
+  <div class="sec-line"></div>
+  <h2 class="sec-title">Business Partners<br><em>+ Negócio.</em></h2>
+  <div class="card">
+    <div id="list-bp">
+      <div class="step"><div class="step-num sn-green">✓</div><span class="step-date" contenteditable="true">ativo</span><div class="step-body" style="flex:1"><p class="step-title" contenteditable="true">Sensibilização nas agendas de war room <span class="badge b-gray">em andamento</span></p><p class="step-desc" contenteditable="true">Tema PCD nas agendas recorrentes de war room com área de negócio. Alinhamento com C-level realizado.</p></div><button class="del-btn" onclick="removeStep(this)">×</button></div>
+      <div class="step"><div class="step-num sn-red">!</div><span class="step-date" contenteditable="true">até 09/06</span><div class="step-body" style="flex:1"><p class="step-title" contenteditable="true">Mapear gestores com maior tempo de retorno em entrevistas PCD <span class="badge b-amber">desbloqueio</span></p><p class="step-desc" contenteditable="true">TA reporta semanalmente. BPs acionam diretamente. Foco nas unidades com maior volume de vagas abertas.</p></div><button class="del-btn" onclick="removeStep(this)">×</button></div>
+      <div class="step"><div class="step-num sn-blue">3</div><span class="step-date" contenteditable="true">recorrente</span><div class="step-body" style="flex:1"><p class="step-title" contenteditable="true">Buddy system para PCDs admitidos <span class="badge b-blue">retenção</span></p><p class="step-desc" contenteditable="true">Gestor designa colega para acompanhar nas 2 primeiras semanas. Check-in de BP no 7º dia.</p></div><button class="del-btn" onclick="removeStep(this)">×</button></div>
+    </div>
+    <button class="add-btn" onclick="addStep('list-bp')">+ Adicionar ação BP</button>
+  </div>
+</section>
+
+<!-- ══ HROPS ══ -->
+<section class="section" id="hrops">
+  <p class="sec-eyebrow">Plano de ação</p>
+  <div class="sec-line"></div>
+  <h2 class="sec-title">HRops<em> + SALU.</em></h2>
+  <div class="card">
+    <div id="list-hrops">
+      <div class="step"><div class="step-num sn-green">✓</div><span class="step-date" contenteditable="true">ativo</span><div class="step-body" style="flex:1"><p class="step-title" contenteditable="true">Canal SALU prioritário operando <span class="badge b-gray">resolvido</span></p><p class="step-desc" contenteditable="true">Canal/contato recorrente. Retorno de laudos com mais agilidade + médico do trabalho presencial.</p></div><button class="del-btn" onclick="removeStep(this)">×</button></div>
+      <div class="step"><div class="step-num sn-red">!</div><span class="step-date" contenteditable="true">urgente</span><div class="step-body" style="flex:1"><p class="step-title" contenteditable="true">Mapeamento possibilidades reenquadramento</p><p class="step-desc" contenteditable="true">Revisão de colaboradores com documentação pendente em andamento para identificar enquadramentos possíveis.</p></div><button class="del-btn" onclick="removeStep(this)">×</button></div>
+      <div class="step"><div class="step-num sn-blue">3</div><span class="step-date" contenteditable="true">recorrente</span><div class="step-body" style="flex:1"><p class="step-title" contenteditable="true">Documentação validada antes de agendar janela <span class="badge b-blue">sem retrabalho</span></p><p class="step-desc" contenteditable="true">Confirmar documentação completa antes de cada agendamento. Evita cancelamentos de última hora.</p></div><button class="del-btn" onclick="removeStep(this)">×</button></div>
+    </div>
+      <div class="step"><div class="step-num sn-blue">4</div><span class="step-date" contenteditable="true">até 12/06</span><div class="step-body" style="flex:1"><p class="step-title" contenteditable="true">Janela extra admissão</p><p class="step-desc" contenteditable="true">Flexibilização prazo subir card — até 12/06, admissão extra em 22/06.</p></div><button class="del-btn" onclick="removeStep(this)">×</button></div>
+    <button class="add-btn" onclick="addStep('list-hrops')">+ Adicionar ação HRops/SALU</button>
+  </div>
+</section>
+
+</main>
+</div>
+<div id="toast">Salvo ✓</div>
+
+<script>
+// ── CHART ──
+new Chart(document.getElementById('histChart'), {
+  type:'bar',
+  data:{
+    labels:['Jan/26','Fev/26','Mar/26','Abr/26','Mai/26'],
+    datasets:[
+      {label:'Ativos',data:[null,null,47,45,47],type:'line',borderColor:'#1659FF',backgroundColor:'rgba(22,89,255,.06)',fill:true,tension:.35,pointRadius:5,pointBackgroundColor:'#1659FF',pointBorderColor:'#fff',pointBorderWidth:2,borderWidth:2,yAxisID:'y',spanGaps:true,order:0},
+      {label:'Admissões',data:[7,1,2,4,6],backgroundColor:'rgba(22,89,255,.7)',borderRadius:4,barPercentage:.38,categoryPercentage:.7,yAxisID:'y2',order:1},
+      {label:'Saídas',data:[4,4,4,4,3],backgroundColor:'rgba(239,68,68,.7)',borderRadius:4,barPercentage:.38,categoryPercentage:.7,yAxisID:'y2',order:1}
+    ]
+  },
+  options:{
+    responsive:true,maintainAspectRatio:false,
+    interaction:{mode:'index',intersect:false},
+    plugins:{legend:{display:false}},
+    scales:{
+      x:{grid:{display:false},ticks:{font:{size:11,family:'Inter'},color:'#6B7280'}},
+      y:{type:'linear',position:'left',min:30,max:60,grid:{color:'#F3F4F6'},ticks:{font:{size:10},color:'#9CA3AF',stepSize:5},title:{display:true,text:'ativos',font:{size:10},color:'#9CA3AF'}},
+      y2:{type:'linear',position:'right',min:0,max:10,grid:{display:false},ticks:{font:{size:10},color:'#9CA3AF',stepSize:2},title:{display:true,text:'admissões / saídas',font:{size:10},color:'#9CA3AF'}}
+    }
+  }
+});
+
+// ── FUNIL VISUAL ──
+const funilSteps = [
+  {label:'Candidatos recebidos', n:313, pct:'100%', drop:'210 não compareceram à entrevista (67%)', w:100},
+  {label:'Participaram do processo', n:77, pct:'24,6%', drop:'1 reprovado no TA', w:24.6},
+  {label:'2ª Etapa', n:66, pct:'21,1%', drop:'40 desistências e reprovações', w:21.1},
+  {label:'Em Admissão', n:26, pct:'8,3%', drop:'13 desistências / cancelamentos', w:8.3},
+  {label:'Admitidos', n:13, pct:'4,2%', drop:null, w:4.2},
+];
+const blues = ['#93AEFF','#6685FF','#4266FF','#2350FF','#1659FF'];
+const fv = document.getElementById('funil-visual');
+fv.innerHTML = funilSteps.map((s,i)=>`
+  <div class="funil-row">
+    <div class="funil-bar-wrap">
+      <div class="funil-bar" style="width:${Math.max(s.w*2.2,20)}%;background:${blues[i]};">
+        <span class="funil-label" style="font-size:11px;">${s.label}</span>
+      </div>
+    </div>
+    <span class="funil-num" contenteditable="true">${s.n}</span>
+    <span class="funil-pct" contenteditable="true">${s.pct}</span>
+  </div>
+  ${s.drop ? `<div class="funil-drop" contenteditable="true">${s.drop}</div>` : ''}
+`).join('');
+
+// ── FUNIL MAIO ──
+const funilMaio = [
+  {label:'Candidatos recebidos', n:77, drop:'55 não compareceram (71,4%)', w:100},
+  {label:'Participaram', n:12, drop:'3 reprovados no TA · 1 aprovado aguardando', w:15.6},
+  {label:'2ª Etapa', n:8, drop:'2 reprovados · 2 desistentes', w:10.4},
+  {label:'Admissão', n:4, drop:null, w:5.2},
+];
+const fm = document.getElementById('funil-maio');
+fm.innerHTML = funilMaio.map((s,i)=>`
+  <div class="funil-row">
+    <div class="funil-bar-wrap">
+      <div class="funil-bar" style="width:${Math.max(s.w*1.5,12)}%;background:${blues[i]};">
+        <span class="funil-label" style="font-size:11px;">${s.label}</span>
+      </div>
+    </div>
+    <span class="funil-num" contenteditable="true">${s.n}</span>
+  </div>
+  ${s.drop ? `<div class="funil-drop" contenteditable="true">${s.drop}</div>` : ''}
+`).join('');
+
+// ── PROFILE BARS ──
+const profiles = [
+  {label:'Física', n:71, pct:22.7},
+  {label:'TEA / Neurodivers.', n:57, pct:18.2},
+  {label:'Visual', n:44, pct:14.1},
+  {label:'Auditiva', n:43, pct:13.7},
+  {label:'Intelectual', n:36, pct:11.5},
+  {label:'Psicossocial / Mental', n:24, pct:7.7},
+  {label:'Não informado / Outros', n:38, pct:12.1},
+];
+document.getElementById('prof-bars').innerHTML = profiles.map(p=>`
+  <div class="prof-row">
+    <span class="prof-label" contenteditable="true">${p.label}</span>
+    <div class="prof-bar-track"><div class="prof-bar-fill" style="width:${p.pct/22.7*100}%"></div></div>
+    <span class="prof-num" contenteditable="true">${p.n}</span>
+    <span class="prof-pct" contenteditable="true">${p.pct}%</span>
+  </div>
+`).join('');
+
+// ── ADMITTED CHIPS ──
+const admitted = [
+  {label:'Física', n:3},{label:'Intelectual', n:3},{label:'Visual', n:2},
+  {label:'Auditiva', n:2},{label:'Psicossocial', n:2},{label:'TEA', n:1}
+];
+document.getElementById('adm-chips').innerHTML = admitted.map(a=>`
+  <span class="adm-chip" style="margin:3px;">${a.label} <span>${a.n}</span></span>
+`).join('');
+
+// ── NAV ──
+function go(id){
+  document.querySelectorAll('.section').forEach(s=>s.classList.remove('active'));
+  document.querySelectorAll('.nav-item').forEach(n=>n.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  document.querySelectorAll('.nav-item').forEach(n=>{
+    if(n.getAttribute('onclick')?.includes(`'${id}'`)) n.classList.add('active');
+  });
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+
+// ── STEPS ──
+function removeStep(btn){
+  const step=btn.closest('.step');
+  const list=step.closest('[id^="list-"]');
+  if(list&&list.querySelectorAll('.step').length>1) step.remove();
+}
+function addStep(listId){
+  const list=document.getElementById(listId);
+  const n=list.querySelectorAll('.step').length+1;
+  const div=document.createElement('div');
+  div.className='step';
+  div.innerHTML=`<div class="step-num sn-blue">${n}</div><span class="step-date" contenteditable="true">data</span><div class="step-body" style="flex:1"><p class="step-title" contenteditable="true">Título da ação</p><p class="step-desc" contenteditable="true">Descrição.</p></div><button class="del-btn" onclick="removeStep(this)">×</button>`;
+  list.appendChild(div);
+  div.querySelector('.step-title').focus();
+}
+
+// ── SAVE ──
+function saveHTML(){
+  const clone=document.documentElement.cloneNode(true);
+  clone.querySelectorAll('[contenteditable]').forEach(el=>el.removeAttribute('contenteditable'));
+  clone.querySelectorAll('.del-btn,.add-btn').forEach(el=>el.remove());
+  const blob=new Blob(['<!DOCTYPE html>\n'+clone.outerHTML],{type:'text/html'});
+  const a=document.createElement('a');
+  a.href=URL.createObjectURL(blob);
+  a.download='pcd_daki_v4.html';
+  a.click();
+  const t=document.getElementById('toast');
+  t.classList.add('show');
+  setTimeout(()=>t.classList.remove('show'),2000);
+}
+document.addEventListener('keydown',e=>{if((e.ctrlKey||e.metaKey)&&e.key==='s'){e.preventDefault();saveHTML();}});
+</script>
+</body>
+</html>
